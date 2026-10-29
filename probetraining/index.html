@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dein Studio – Probetraining</title>
+<meta name="description" content="Kostenloses Probetraining: Fitness, Boxen und Reha. Jetzt Termin per WhatsApp anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0B0B;
+    --surface: #161512;
+    --line: #2A2722;
+    --line-strong: #3A362F;
+    --text: #F2EFE8;
+    --muted: #B8B4AA;
+    --faint: #8C887E;
+    --gold: #D4AF5A;
+    --gold-light: #E8C878;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); }
+  a:hover { color: var(--gold-light); }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 20px; }
+
+  header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .logo { font-size: 15px; font-weight: 700; letter-spacing: 3px; }
+  .logo span { color: var(--gold); }
+  .header-link { font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 0; }
+
+  .hero { padding: 40px 0 48px; display: flex; flex-direction: column; gap: 18px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--gold); }
+  h1 { margin: 0; font-size: 40px; line-height: 1.1; font-weight: 700; }
+  h2 { margin: 0; font-size: 22px; font-weight: 700; }
+  .lead { margin: 0; font-size: 17px; line-height: 1.55; color: var(--muted); }
+
+  .btn {
+    display: block; width: 100%; text-align: center; font-family: inherit;
+    background: var(--gold); color: var(--bg); font-size: 17px; font-weight: 700;
+    text-decoration: none; padding: 17px 20px; border: 0; border-radius: 12px; cursor: pointer;
+  }
+  .btn:hover { background: var(--gold-light); color: var(--bg); }
+  .btn.disabled { background: var(--line-strong); color: var(--muted); }
+
+  .trainer { padding: 8px 0 48px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+  .trainer h2 { align-self: flex-start; }
+  .photo {
+    width: 132px; height: 132px; border-radius: 50%; border: 2px dashed var(--gold);
+    background: var(--surface); display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--gold); margin-top: 4px;
+  }
+  .trainer-name { font-size: 20px; font-weight: 700; }
+  .trainer-role { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); margin-top: 4px; }
+  .quote { margin: 0; font-size: 17px; line-height: 1.55; max-width: 400px; }
+
+  .offers { padding: 8px 0 40px; display: flex; flex-direction: column; gap: 14px; }
+  .offers h2 { margin-bottom: 4px; }
+  .card { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .card-title { font-size: 18px; font-weight: 600; }
+  .card-text { font-size: 15px; line-height: 1.5; color: var(--muted); }
+
+  .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-bottom: 48px; }
+  .fact { background: var(--surface); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .fact-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); }
+  .fact-value { font-size: 16px; font-weight: 600; }
+  .fact-text { font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .fact-address {
+    grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center;
+    gap: 12px; text-decoration: none; color: var(--text);
+  }
+  .fact-address:hover { color: var(--text); }
+  .fact-address .addr { font-size: 15px; line-height: 1.45; }
+  .maps { font-size: 14px; font-weight: 600; color: var(--gold); white-space: nowrap; }
+
+  .form { border: 1px solid var(--gold); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; scroll-margin-top: 20px; }
+  .form p { margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  label, .field-label { font-size: 14px; font-weight: 600; }
+  input, select {
+    font-family: inherit; font-size: 17px; color: var(--text); background: var(--surface);
+    border: 1px solid var(--line-strong); border-radius: 10px; padding: 14px; width: 100%;
+    min-height: 52px; color-scheme: dark; -webkit-appearance: none; appearance: none;
+  }
+  select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+    background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px;
+  }
+  input:focus, select:focus, .choice:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .choice {
+    font-family: inherit; font-size: 16px; font-weight: 600; border-radius: 10px; padding: 14px 6px;
+    min-height: 50px; cursor: pointer; background: var(--surface); color: var(--text); border: 1px solid var(--line-strong);
+  }
+  .choice[aria-pressed="true"] { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .hint { font-size: 14px; color: var(--gold-light); text-align: center; margin: -6px 0 0; }
+  .hint[hidden] { display: none; }
+
+  footer { padding: 0 0 36px; font-size: 13px; color: var(--faint); text-align: center; line-height: 1.6; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  footer a { padding: 10px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo">DEIN <span>STUDIO</span></div>
+    <a class="header-link" href="#termin">Termin sichern</a>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">KOSTENLOS · UNVERBINDLICH</div>
+    <h1>Dein Probetraining<br>geht aufs Haus.</h1>
+    <p class="lead">Komm vorbei, schnupper rein und finde heraus, was zu dir passt – ganz ohne Verpflichtung.</p>
+    <a class="btn" href="#termin" style="margin-top: 8px">Kostenlos Termin anfragen</a>
+  </section>
+
+  <section class="trainer">
+    <h2>Dein Trainer</h2>
+    <div class="photo" role="img" aria-label="Platzhalter: Foto Inhaber">Foto Inhaber</div>
+    <div>
+      <div class="trainer-name">[Vorname]</div>
+      <div class="trainer-role">INHABER &amp; TRAINER</div>
+    </div>
+    <p class="quote">„Ausreden lässt du an der Tür. Komm zum Probetraining, zeig mir, was du draufhast – den Rest kriegen wir zusammen hin. Sport frei!“</p>
+  </section>
+
+  <section class="offers">
+    <h2>Unsere Angebote</h2>
+    <div class="card">
+      <div class="card-title">Fitness</div>
+      <div class="card-text">Kraft und Ausdauer – im eigenen Tempo.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Boxen</div>
+      <div class="card-text">Technik, Kondition und Kopf frei bekommen.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Reha</div>
+      <div class="card-text">Begleitetes Training für den Wiedereinstieg.</div>
+    </div>
+  </section>
+
+  <section class="facts">
+    <div class="fact">
+      <div class="fact-label">PREISE</div>
+      <div class="fact-value">Auf Anfrage</div>
+      <div class="fact-text">Frag einfach beim Probetraining.</div>
+    </div>
+    <div class="fact">
+      <div class="fact-label">GEÖFFNET</div>
+      <div class="fact-value">Täglich</div>
+      <div class="fact-text">10–20 Uhr</div>
+    </div>
+    <a class="fact fact-address js-maps" href="#" target="_blank" rel="noopener">
+      <span style="display: flex; flex-direction: column; gap: 6px">
+        <span class="fact-label">ADRESSE</span>
+        <span class="addr">[Straße, Hausnummer]<br>15890 Eisenhüttenstadt</span>
+      </span>
+      <span class="maps">In Maps öffnen</span>
+    </a>
+  </section>
+
+  <form class="form" id="termin" novalidate>
+    <div>
+      <h2>Probetraining anfragen</h2>
+      <p>Vier Angaben – wir melden uns per WhatsApp.</p>
+    </div>
+
+    <div class="field">
+      <label for="f-name">Name</label>
+      <input id="f-name" type="text" autocomplete="name" placeholder="Vor- und Nachname">
+    </div>
+
+    <div class="field">
+      <label for="f-day">Wunschtag</label>
+      <input id="f-day" type="date">
+    </div>
+
+    <div class="field">
+      <label for="f-time">Uhrzeit</label>
+      <select id="f-time">
+        <option value="">Bitte wählen</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div class="field-label" id="f-int">Interesse</div>
+      <div class="choices" role="group" aria-labelledby="f-int">
+        <button type="button" class="choice" aria-pressed="false">Fitness</button>
+        <button type="button" class="choice" aria-pressed="false">Boxen</button>
+        <button type="button" class="choice" aria-pressed="false">Reha</button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn disabled" id="send">Per WhatsApp senden</button>
+    <p class="hint" id="hint" hidden>Bitte Name, Wunschtag, Uhrzeit und Interesse angeben.</p>
+  </form>
+
+  <footer>
+    <span>Dein Studio · Täglich 10–20 Uhr</span>
+    <a class="js-maps" href="#" target="_blank" rel="noopener">[Straße, Hausnummer], 15890 Eisenhüttenstadt</a>
+  </footer>
+
+</div>
+
+<script>
+  // ===== Hier anpassen =====
+  var WHATSAPP_NUMMER = '490000000000';   // Ländervorwahl ohne + und ohne 0, z. B. 4915112345678
+  var STUDIO_NAME = 'Dein Studio';
+  var ADRESSE = '[Straße, Hausnummer], 15890 Eisenhüttenstadt';
+  // =========================
+
+  var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ADRESSE);
+  document.querySelectorAll('.js-maps').forEach(function (a) { a.href = mapsUrl; });
+
+  var nameEl = document.getElementById('f-name');
+  var dayEl = document.getElementById('f-day');
+  var timeEl = document.getElementById('f-time');
+  var sendEl = document.getElementById('send');
+  var hintEl = document.getElementById('hint');
+  var choices = document.querySelectorAll('.choice');
+  var interest = '';
+
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var now = new Date();
+  dayEl.min = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+
+  for (var h = 10; h <= 19; h++) {
+    var opt = document.createElement('option');
+    opt.value = h + ':00';
+    opt.textContent = h + ':00 Uhr';
+    timeEl.appendChild(opt);
+  }
+
+  function isComplete() {
+    return nameEl.value.trim() && dayEl.value && timeEl.value && interest;
+  }
+  function update() {
+    sendEl.classList.toggle('disabled', !isComplete());
+    if (isComplete()) hintEl.hidden = true;
+  }
+
+  choices.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      interest = btn.textContent;
+      choices.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      update();
+    });
+  });
+  [nameEl, dayEl, timeEl].forEach(function (el) {
+    el.addEventListener('input', update);
+    el.addEventListener('change', update);
+  });
+
+  function dayGerman(value) {
+    var p = value.split('-');
+    var wd = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    return wd[d.getDay()] + ', ' + p[2] + '.' + p[1] + '.' + p[0];
+  }
+
+  document.getElementById('termin').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!isComplete()) { hintEl.hidden = false; return; }
+    var msg = 'Hallo ' + STUDIO_NAME + ', ich möchte gern ein kostenloses Probetraining machen.\n\n'
+      + 'Name: ' + nameEl.value.trim() + '\n'
+      + 'Wunschtag: ' + dayGerman(dayEl.value) + '\n'
+      + 'Uhrzeit: ' + timeEl.value + ' Uhr\n'
+      + 'Interesse: ' + interest;
+    window.open('https://wa.me/' + WHATSAPP_NUMMER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
