@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Familybowling Eisenhüttenstadt – Entwurf</title>
+<meta name="description" content="Familybowling Eisenhüttenstadt: 12 Bahnen seit 1999, Terrasse am Oder-Spree-Kanal, Küche, Feiern und Liga.">
+<style>
+  :root {
+    --ink: #11141B;
+    --ink-2: #1B1F29;
+    --cream: #FBF7F0;
+    --sand: #F2EBDF;
+    --line: #E4DCCD;
+    --text: #1A1D24;
+    --muted: #5E6270;
+    --on-dark: #F4F1EA;
+    --on-dark-muted: #B4B0A8;
+    --red: #D12F25;
+    --red-hover: #B5261D;
+    --wood: #D9A066;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 80px 0; scroll-margin-top: 72px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  h2 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; }
+  .section-head { display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin-bottom: 40px; }
+  .section-head p { color: var(--muted); font-size: 18px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-weight: 700; font-size: 16px; text-decoration: none; border-radius: 999px;
+    padding: 15px 26px; min-height: 52px; transition: background .15s, color .15s, border-color .15s;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: var(--red-hover); }
+  .btn-ghost { border: 2px solid rgba(244,241,234,.35); color: var(--on-dark); }
+  .btn-ghost:hover { border-color: var(--on-dark); }
+  .btn-dark { background: var(--ink); color: var(--on-dark); }
+  .btn-dark:hover { background: var(--ink-2); }
+  a:focus-visible { outline: 3px solid var(--wood); outline-offset: 3px; }
+
+  /* Hinweis */
+  .notice { background: var(--red); color: #fff; text-align: center; font-size: 14px; font-weight: 600; padding: 10px 20px; }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 10; background: rgba(17,20,27,.96); backdrop-filter: blur(8px); color: var(--on-dark); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: #fff; }
+  .logo span { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; line-height: 1.1; }
+  .logo small { display: block; font-weight: 500; font-size: 12px; color: var(--on-dark-muted); letter-spacing: 0; }
+  .nav { display: flex; gap: 28px; }
+  .nav a { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--on-dark-muted); padding: 8px 0; }
+  .nav a:hover { color: var(--on-dark); }
+  .header-call { padding: 10px 18px; min-height: 44px; font-size: 15px; }
+
+  /* Hero */
+  .hero { background: var(--ink); color: var(--on-dark); padding: 72px 0 0; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; }
+  .hero-copy { padding-bottom: 80px; }
+  .hero h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 900; }
+  .hero h1 em { font-style: normal; color: var(--wood); }
+  .hero-copy > p { font-size: 19px; color: var(--on-dark-muted); margin-top: 22px; max-width: 520px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+  /* Bahn-Grafik */
+  .lanes { position: relative; height: 460px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; perspective: 600px; }
+  .lane {
+    background: linear-gradient(180deg, #2A2116 0%, #8A5C30 55%, var(--wood) 100%);
+    border-radius: 6px 6px 0 0; position: relative; transform-origin: bottom; transform: rotateX(28deg);
+    box-shadow: inset 6px 0 0 rgba(0,0,0,.25), inset -6px 0 0 rgba(0,0,0,.25);
+  }
+  .lane::before {
+    content: ""; position: absolute; left: 50%; bottom: 28%; transform: translateX(-50%);
+    width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 14px solid rgba(17,20,27,.55);
+    filter: drop-shadow(-22px 18px 0 rgba(17,20,27,.55)) drop-shadow(44px 0 0 rgba(17,20,27,.55));
+  }
+  .pins { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .pins div { display: flex; gap: 5px; }
+  .pins i { width: 7px; height: 16px; background: #fff; border-radius: 4px 4px 3px 3px; box-shadow: inset 0 3px 0 0 var(--red); display: block; }
+  .ball { position: absolute; bottom: 40px; left: 50%; width: 46px; height: 46px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #E9554B, var(--red) 45%, #7E1912); transform: translateX(-50%); box-shadow: 0 10px 20px rgba(0,0,0,.4); }
+  .lane:nth-child(1) .ball, .lane:nth-child(3) .ball { display: none; }
+
+  /* Fakten */
+  .facts { background: var(--ink-2); color: var(--on-dark); }
+  .facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .fact { padding: 26px 20px; border-left: 1px solid rgba(255,255,255,.08); }
+  .fact:first-child { border-left: 0; padding-left: 0; }
+  .fact strong { display: block; font-size: 30px; font-weight: 900; color: var(--wood); line-height: 1.1; }
+  .fact span { font-size: 14px; color: var(--on-dark-muted); }
+
+  /* Preise */
+  .prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .price-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 8px; }
+  .price-card.hot { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+  .price-days { font-weight: 700; font-size: 15px; color: var(--muted); }
+  .hot .price-days { color: var(--on-dark-muted); }
+  .price { font-size: 64px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 6px 0; }
+  .price small { font-size: 18px; font-weight: 600; letter-spacing: 0; }
+  .price-card ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 15px; }
+  .hot ul { color: var(--on-dark-muted); }
+  .price-card li::before { content: "✓"; color: var(--red); font-weight: 800; margin-right: 8px; }
+  .hot li::before { color: var(--wood); }
+
+  .hours { margin-top: 18px; background: var(--sand); border-radius: 22px; padding: 28px 32px; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; }
+  .hours h3 { font-size: 22px; font-weight: 800; }
+  .hours-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hours-list div { background: #fff; border-radius: 14px; padding: 14px 18px; }
+  .hours-list b { display: block; font-size: 14px; color: var(--muted); font-weight: 600; }
+  .hours-list span { font-size: 18px; font-weight: 800; }
+  .hours-list .closed span { color: var(--muted); font-weight: 600; }
+
+  /* Feiern */
+  .party { background: var(--sand); }
+  .party-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .party-card { background: #fff; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px; }
+  .party-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--ink); color: var(--wood); display: flex; align-items: center; justify-content: center; }
+  .party-icon svg { width: 26px; height: 26px; }
+  .party-card h3 { font-size: 22px; font-weight: 800; }
+  .party-card p { color: var(--muted); }
+  .party-cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+  .party-cta p { font-weight: 600; }
+
+  /* Küche */
+  .kitchen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .kitchen-photo { border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--sand); position: relative; }
+  .kitchen-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .kitchen-photo .tag { position: absolute; left: 18px; bottom: 18px; background: var(--ink); color: var(--on-dark); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; }
+  .kitchen-copy { display: flex; flex-direction: column; gap: 18px; }
+  .kitchen-copy p { color: var(--muted); font-size: 18px; }
+
+  /* Liga */
+  .league { background: var(--ink); color: var(--on-dark); }
+  .league-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+  .league h2 { color: var(--on-dark); }
+  .league p { color: var(--on-dark-muted); font-size: 18px; margin-top: 14px; max-width: 560px; }
+  .league-tags { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .league-tags span { border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; }
+
+  /* Kontakt */
+  .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
+  .contact-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 22px; }
+  .contact-row { display: flex; gap: 16px; align-items: flex-start; text-decoration: none; }
+  .contact-row svg { width: 24px; height: 24px; color: var(--red); flex: none; margin-top: 2px; }
+  .contact-row b { display: block; font-size: 14px; color: var(--muted); font-weight: 600; }
+  .contact-row span { font-size: 18px; font-weight: 700; }
+  a.contact-row:hover span { color: var(--red); }
+  .map-card { background: var(--ink); color: var(--on-dark); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 280px; position: relative; overflow: hidden; }
+  .map-card::before {
+    content: ""; position: absolute; inset: 0; opacity: .5;
+    background:
+      linear-gradient(115deg, transparent 46%, #2E6E8E 46%, #2E6E8E 58%, transparent 58%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px);
+  }
+  .map-card > * { position: relative; }
+  .map-card h3 { font-size: 26px; font-weight: 800; }
+  .map-card p { color: var(--on-dark-muted); margin-top: 8px; }
+  .pay { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pay span { background: var(--sand); color: var(--text); font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+
+  footer { background: var(--ink); color: var(--on-dark-muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 28px; padding-bottom: 28px; }
+  footer nav { display: flex; gap: 20px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--on-dark); }
+
+  /* Mobile Anruf-Leiste */
+  .mobile-bar { display: none; }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+    .hero-grid { grid-template-columns: 1fr; gap: 0; }
+    .hero-copy { padding-bottom: 48px; }
+    .lanes { height: 240px; }
+    .facts .wrap { grid-template-columns: repeat(2, 1fr); }
+    .fact:nth-child(3) { border-left: 0; padding-left: 0; }
+    .fact { border-top: 1px solid rgba(255,255,255,.08); }
+    .fact:nth-child(-n+2) { border-top: 0; }
+    .prices, .party-grid, .kitchen-grid, .contact-grid { grid-template-columns: 1fr; }
+    .kitchen-grid { gap: 32px; }
+    .hours { grid-template-columns: 1fr; gap: 18px; }
+    .league-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 60px 0; }
+    .header-call { display: none; }
+    .hours-list { grid-template-columns: 1fr; }
+    .price { font-size: 54px; }
+    .price-card, .party-card, .contact-card, .map-card { padding: 24px; }
+    body { padding-bottom: 76px; }
+    .mobile-bar {
+      display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 20; gap: 10px;
+    }
+    .mobile-bar .btn { flex: 1; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">Ab sofort samstags schon ab 15:00 Uhr geöffnet!</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <img src="https://familybowling.de/wp-content/uploads/2024/04/cropped-Familybowling_logo.jpg" alt="" onerror="this.style.display='none'">
+      <span>Familybowling<small>Eisenhüttenstadt</small></span>
+    </a>
+    <nav class="nav" aria-label="Hauptmenü">
+      <a href="#preise">Preise</a>
+      <a href="#feiern">Feiern</a>
+      <a href="#kueche">Küche</a>
+      <a href="#liga">Liga</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-red header-call" href="tel:+493364774634">Bahn reservieren</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">Seit 1999 in Hütte</div>
+        <h1 id="hero-title">Bowling direkt <em>am Kanal.</em></h1>
+        <p>12 Bahnen, gutes Essen und eine Terrasse mit Blick auf den Oder-Spree-Kanal. Für Familien, Freunde, Feiern und alle, die einfach mal wieder alle Neune wollen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-red" href="tel:+493364774634">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            Bahn reservieren
+          </a>
+          <a class="btn btn-ghost" href="#preise">Preise &amp; Zeiten</a>
+        </div>
+      </div>
+      <div class="lanes" aria-hidden="true">
+        <div class="lane"><div class="pins"><div><i></i><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i></div><div><i></i></div></div><div class="ball"></div></div>
+        <div class="lane"><div class="pins"><div><i></i><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i></div><div><i></i></div></div><div class="ball"></div></div>
+        <div class="lane"><div class="pins"><div><i></i><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i></div><div><i></i></div></div><div class="ball"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact"><strong>12</strong><span>Bowlingbahnen</span></div>
+      <div class="fact"><strong>1999</strong><span>seit über 25 Jahren</span></div>
+      <div class="fact"><strong>Terrasse</strong><span>direkt am Kanal</span></div>
+      <div class="fact"><strong>Küche</strong><span>Essen zum Bowlen</span></div>
+    </div>
+  </div>
+
+  <section id="preise" aria-labelledby="preise-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Preise &amp; Zeiten</div>
+        <h2 id="preise-title">Eine Bahn, eine Stunde, Schuhe inklusive.</h2>
+        <p>Pro Bahn können mehrere Personen spielen. Ideal für Familie, Freunde oder Kollegen.</p>
+      </div>
+      <div class="prices">
+        <div class="price-card">
+          <div class="price-days">Dienstag bis Donnerstag</div>
+          <div class="price">23 € <small>/ Bahn &amp; Stunde</small></div>
+          <ul><li>Leihschuhe inklusive</li><li>Ab 16:00 Uhr</li></ul>
+        </div>
+        <div class="price-card hot">
+          <div class="price-days">Freitag, Samstag, Feiertage &amp; Vorfeiertage</div>
+          <div class="price">27 € <small>/ Bahn &amp; Stunde</small></div>
+          <ul><li>Leihschuhe inklusive</li><li>Am Wochenende am besten vorher reservieren</li></ul>
+        </div>
+      </div>
+      <div class="hours">
+        <h3>Öffnungszeiten</h3>
+        <div class="hours-list">
+          <div><b>Dienstag – Freitag</b><span>ab 16:00 Uhr</span></div>
+          <div><b>Samstag</b><span>ab 15:00 Uhr</span></div>
+          <div class="closed"><b>Sonntag &amp; Montag</b><span>geschlossen</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="party" id="feiern" aria-labelledby="feiern-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Feiern &amp; Gruppen</div>
+        <h2 id="feiern-title">Ihr feiert. Wir kümmern uns um Bahn und Essen.</h2>
+        <p>Ob Kindergeburtstag, Firmenfeier oder Abend mit der ganzen Truppe: Bowlen und richtig gutes Essen aus unserer Küche, alles an einem Ort.</p>
+      </div>
+      <div class="party-grid">
+        <div class="party-card">
+          <div class="party-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+          <h3>Kindergeburtstag</h3>
+          <p>Bowlen, lachen, essen. Die Kids haben Spaß, und ihr müsst zu Hause nichts aufräumen.</p>
+        </div>
+        <div class="party-card">
+          <div class="party-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+          <h3>Firmenfeier</h3>
+          <p>Teamabend, Weihnachtsfeier oder Abteilungsausflug. Mit Essen und Getränken für alle.</p>
+        </div>
+        <div class="party-card">
+          <div class="party-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <h3>Gruppen &amp; Vereine</h3>
+          <p>Mehrere Bahnen für eure Gruppe, dazu Essen aus der Küche. Sprecht uns einfach an.</p>
+        </div>
+      </div>
+      <div class="party-cta">
+        <a class="btn btn-dark" href="tel:+493364774634">Feier anfragen: 03364 774634</a>
+        <a href="mailto:info@familybowling.de?subject=Anfrage%20Feier" style="font-weight:700">oder per E-Mail</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kueche" aria-labelledby="kueche-title">
+    <div class="wrap kitchen-grid">
+      <div class="kitchen-photo">
+        <img src="https://familybowling.de/wp-content/uploads/2024/08/IMG-20240520-WA0018.jpg" alt="Essen aus der Küche von Familybowling" loading="lazy">
+        <div class="tag">Aus unserer Küche</div>
+      </div>
+      <div class="kitchen-copy">
+        <div class="kicker">Küche</div>
+        <h2 id="kueche-title">Erst bowlen, dann richtig gut essen.</h2>
+        <p>Zwischen zwei Runden oder danach auf der Terrasse mit Blick aufs Wasser: Unsere Küche sorgt dafür, dass niemand hungrig nach Hause geht.</p>
+        <div><a class="btn btn-red" href="https://familybowling.de/wp-content/uploads/2026/06/Speisekarte-neu.pdf" target="_blank" rel="noopener">Speisekarte ansehen</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="league" id="liga" aria-labelledby="liga-title">
+    <div class="wrap league-inner">
+      <div>
+        <div class="kicker" style="color: var(--wood)">DBV-Liga</div>
+        <h2 id="liga-title">Hier wird auch ernsthaft gespielt.</h2>
+        <p>Bei uns finden die Spieltage der Stadtliga statt. Alle Ergebnisse und Berichte gibt es im Liga-Bereich.</p>
+        <div class="league-tags"><span>Stadtliga A</span><span>Stadtliga B</span></div>
+      </div>
+      <a class="btn btn-ghost" href="https://familybowling.de/bereiche/dbv-liga/">Zu den Ergebnissen →</a>
+    </div>
+  </section>
+
+  <section id="kontakt" aria-labelledby="kontakt-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Kontakt</div>
+        <h2 id="kontakt-title">Bahn reservieren? Einfach anrufen.</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <a class="contact-row" href="tel:+493364774634">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b>Telefon</b><span>03364 774634</span></div>
+          </a>
+          <a class="contact-row" href="mailto:info@familybowling.de">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            <div><b>E-Mail</b><span>info@familybowling.de</span></div>
+          </a>
+          <a class="contact-row" href="https://www.google.com/maps/search/?api=1&query=F%C3%A4hrstra%C3%9Fe%2018b%2C%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Adresse</b><span>Fährstraße 18b, 15890 Eisenhüttenstadt</span></div>
+          </a>
+        </div>
+        <div class="map-card">
+          <div>
+            <h3>Direkt am Oder-Spree-Kanal</h3>
+            <p>Mit Terrasse am Wasser. Perfekt für einen Sommerabend nach dem Bowlen.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px">
+            <div class="pay" aria-label="Zahlungsarten"><span>Barzahlung</span><span>Kartenzahlung</span></div>
+            <a class="btn btn-red" href="https://www.google.com/maps/search/?api=1&query=F%C3%A4hrstra%C3%9Fe%2018b%2C%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Route planen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Familybowling Eisenhüttenstadt</span>
+    <nav aria-label="Rechtliches">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-red" href="tel:+493364774634">Anrufen</a>
+  <a class="btn btn-dark" href="#preise">Preise</a>
+</div>
+
+</body>
+</html>
