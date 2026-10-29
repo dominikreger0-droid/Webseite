@@ -142,6 +142,9 @@
   .kitchen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .kitchen-photo { border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--sand); position: relative; }
   .kitchen-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border: 2px dashed #CDBFA6; border-radius: 26px; color: var(--muted); font-weight: 600; text-align: center; padding: 20px; }
+  .map-card.has-photo::before { opacity: 1; background: linear-gradient(180deg, rgba(17,20,27,.35) 0%, rgba(17,20,27,.88) 70%), url("https://familybowling.de/wp-content/uploads/2024/08/IMG-20240520-WA0018.jpg") center / cover no-repeat; }
+  .map-card.has-photo { min-height: 380px; }
   .kitchen-photo .tag { position: absolute; left: 18px; bottom: 18px; background: var(--ink); color: var(--on-dark); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; }
   .kitchen-copy { display: flex; flex-direction: column; gap: 18px; }
   .kitchen-copy p { color: var(--muted); font-size: 18px; }
@@ -331,7 +334,7 @@
   <section id="kueche" aria-labelledby="kueche-title">
     <div class="wrap kitchen-grid">
       <div class="kitchen-photo">
-        <img src="https://familybowling.de/wp-content/uploads/2024/08/IMG-20240520-WA0018.jpg" alt="Essen aus der Küche von Familybowling" loading="lazy">
+        <div class="photo-placeholder">Platzhalter: Foto vom Essen</div>
         <div class="tag">Aus unserer Küche</div>
       </div>
       <div class="kitchen-copy">
@@ -376,7 +379,7 @@
             <div><b>Adresse</b><span>Fährstraße 18b, 15890 Eisenhüttenstadt</span></div>
           </a>
         </div>
-        <div class="map-card">
+        <div class="map-card has-photo">
           <div>
             <h3>Direkt am Oder-Spree-Kanal</h3>
             <p>Mit Terrasse am Wasser. Perfekt für einen Sommerabend nach dem Bowlen.</p>
