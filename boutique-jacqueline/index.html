@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Boutique Jacqueline – Entwurf</title>
+<meta name="description" content="Boutique Jacqueline in Eisenhüttenstadt: Damen- und Herrenmode, Abiball und Jugendweihe, persönliche Beratung.">
+<style>
+  /* Layout: Modehaus-Schaufenster – große Typo statt Fotos, viel Luft, Aubergine als einziger Akzent, zarter Rosé-Ton für Flächen */
+  :root {
+    --bg: #FFFFFF;
+    --blush: #F6EEF0;
+    --line: #E8DFE2;
+    --text: #1E1A1C;
+    --muted: #6A6064;
+    --plum: #4B1F3F;
+    --plum-hover: #3A1731;
+    --gold: #A88A5C;
+    --on-dark: #F7F1F3;
+    --on-dark-muted: #CDBAC4;
+    --display: "Didot", "Bodoni 72", "Bodoni MT", "Playfair Display", Georgia, "Times New Roman", serif;
+    --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 400; line-height: 1.05; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 96px 0; scroll-margin-top: 76px; }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  h2 { font-size: clamp(36px, 5.4vw, 56px); }
+  .head { max-width: 640px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+  .head p { font-size: 18px; color: var(--muted); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 14px 28px; font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: background .15s, color .15s, border-color .15s; }
+  .btn-plum { background: var(--plum); color: #fff; }
+  .btn-plum:hover { background: var(--plum-hover); }
+  .btn-line { border: 1px solid var(--text); color: var(--text); }
+  .btn-line:hover { background: var(--text); color: #fff; }
+  .btn-light { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+  .btn-light:hover { background: #fff; color: var(--plum); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .draft { background: var(--text); color: #B8AEB2; font-size: 13px; text-align: center; padding: 8px 20px; }
+  .draft b { color: #fff; }
+
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .site-header .wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .wordmark { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+  .wordmark small { font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .wordmark span { font-family: var(--display); font-size: 26px; }
+  .nav { display: flex; gap: 32px; }
+  .nav a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 8px 0; }
+  .nav a:hover { color: var(--plum); }
+  .header-call { min-height: 44px; padding: 10px 18px; font-size: 13px; }
+
+  /* Hero */
+  .hero { padding: 88px 0 96px; position: relative; overflow: hidden; }
+  .hero::after { content: "J"; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: var(--display); font-size: clamp(280px, 42vw, 560px); line-height: 1; color: var(--blush); z-index: -1; pointer-events: none; }
+  .hero h1 { font-size: clamp(52px, 9vw, 108px); max-width: 820px; }
+  .hero h1 em { font-style: italic; color: var(--plum); }
+  .hero p { font-size: 20px; color: var(--muted); max-width: 540px; margin-top: 28px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+
+  .ribbon { background: var(--plum); color: var(--on-dark); }
+  .ribbon .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .ribbon div { padding: 22px 16px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-left: 1px solid rgba(255,255,255,.14); }
+  .ribbon div:first-child { border-left: 0; }
+
+  /* Sortiment */
+  .collection { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .item { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 340px; padding: 32px; background: var(--blush); text-decoration: none; transition: background .2s, color .2s; }
+  .item:hover { background: var(--plum); color: var(--on-dark); }
+  .item:hover p, .item:hover .num { color: var(--on-dark-muted); }
+  .num { font-size: 13px; letter-spacing: .2em; color: var(--muted); }
+  .item h3 { font-size: 40px; }
+  .item p { color: var(--muted); margin-top: 12px; }
+  .more { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Beratung */
+  .advice { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .quote { font-family: var(--display); font-size: clamp(32px, 4.4vw, 48px); line-height: 1.15; }
+  .quote em { color: var(--plum); }
+  .advice-list { display: flex; flex-direction: column; }
+  .advice-list div { padding: 22px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 20px; }
+  .advice-list div:last-child { border-bottom: 1px solid var(--line); }
+  .advice-list b { font-family: var(--display); font-weight: 400; font-size: 22px; }
+  .advice-list span { color: var(--muted); }
+
+  /* Anlass */
+  .occasion { background: var(--plum); color: var(--on-dark); }
+  .occasion-inner { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: end; }
+  .occasion h2 { color: #fff; }
+  .occasion p { color: var(--on-dark-muted); font-size: 18px; margin-top: 20px; max-width: 560px; }
+  .occasion-tags { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .occasion-tags span { font-family: var(--display); font-size: 30px; border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 8px; width: 100%; }
+
+  /* Gutschein */
+  .gift { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .card-visual { aspect-ratio: 1.6 / 1; max-width: 100%; background: var(--plum); color: #fff; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 30px 60px rgba(75,31,63,.22); transform: rotate(-3deg); }
+  .card-visual small { font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: var(--on-dark-muted); }
+  .card-visual span { font-family: var(--display); font-size: clamp(28px, 4vw, 40px); line-height: 1; }
+  .card-visual b { font-family: var(--display); font-weight: 400; font-size: 18px; color: var(--gold); }
+  .gift-copy { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+  .gift-copy p { font-size: 18px; color: var(--muted); }
+
+  /* Stimmen */
+  .praise-band { background: var(--blush); }
+  .praise { display: flex; flex-wrap: wrap; gap: 12px; }
+  .praise span { background: #fff; padding: 14px 22px; font-family: var(--display); font-size: 22px; }
+
+  /* Besuch */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .panel { border: 1px solid var(--line); padding: 34px; display: flex; flex-direction: column; gap: 22px; }
+  .panel h3 { font-size: 30px; }
+  .row { display: flex; gap: 16px; align-items: flex-start; text-decoration: none; }
+  .row svg { width: 22px; height: 22px; color: var(--plum); flex: none; margin-top: 3px; }
+  .row b { display: block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .row span { font-size: 18px; font-weight: 600; }
+  a.row:hover span { color: var(--plum); }
+  .hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hours td { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 600; }
+  .hours tr:last-child td { border-bottom: 0; }
+
+  footer { border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 28px; padding-bottom: 28px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--plum); }
+
+  .mobile-bar { display: none; }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .collection, .advice, .occasion-inner, .gift, .visit { grid-template-columns: 1fr; }
+    .advice, .gift { gap: 40px; }
+    .ribbon .wrap { grid-template-columns: repeat(2, 1fr); }
+    .ribbon div:nth-child(3) { border-left: 0; }
+    .ribbon div:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.14); }
+    .item { min-height: 0; }
+    .card-visual { max-width: 420px; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 68px 0; }
+    .hero { padding: 64px 0 72px; }
+    .header-call { display: none; }
+    .advice-list div { grid-template-columns: 1fr; gap: 4px; }
+    .panel, .item { padding: 24px; }
+    .item h3 { font-size: 34px; }
+    body { padding-bottom: 76px; }
+    .mobile-bar { display: flex; gap: 10px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; }
+    .mobile-bar .btn { flex: 1; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .mobile-bar .btn-line { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft"><b>Entwurf</b> von Dominik Reger · nicht die offizielle Seite der Boutique Jacqueline</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="#top"><small>Boutique</small><span>Jacqueline</span></a>
+    <nav class="nav" aria-label="Hauptmenü">
+      <a href="#mode">Mode</a>
+      <a href="#anlass">Abiball &amp; Jugendweihe</a>
+      <a href="#gutschein">Gutschein</a>
+      <a href="#besuch">Besuch</a>
+    </nav>
+    <a class="btn btn-plum header-call" href="tel:+493364452529">03364 452529</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="label">Damen- &amp; Herrenmode · Eisenhüttenstadt</div>
+      <h1 id="hero-title">Mode, die <em>passt.</em> Für jeden Tag und besondere Anlässe.</h1>
+      <p>Eine sorgfältig ausgewählte Kollektion, vom Alltag über smarte Looks bis zum Abendoutfit. Mit Zeit für persönliche Beratung, damit Sie sich wirklich wohlfühlen.</p>
+      <div class="hero-actions">
+        <a class="btn btn-plum" href="#besuch">Besuch planen</a>
+        <a class="btn btn-line" href="#mode">Zur Mode</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon">
+    <div class="wrap">
+      <div>Damenmode</div>
+      <div>Herrenmode</div>
+      <div>Persönliche Beratung</div>
+      <div>Geschenkkarten</div>
+    </div>
+  </div>
+
+  <section id="mode" aria-labelledby="mode-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Unsere Mode</div>
+        <h2 id="mode-title">Für Sie, für Ihn, für den großen Tag.</h2>
+      </div>
+      <div class="collection">
+        <a class="item" href="https://www.boutique-jacqueline.de/damen-mode">
+          <span class="num">I</span>
+          <div><h3>Damen</h3><p>Vom entspannten Alltag bis zum eleganten Abend.</p></div>
+          <span class="more">Entdecken →</span>
+        </a>
+        <a class="item" href="https://www.boutique-jacqueline.de/herrenmode">
+          <span class="num">II</span>
+          <div><h3>Herren</h3><p>Smarte Looks fürs Büro, die Freizeit und Feiern.</p></div>
+          <span class="more">Entdecken →</span>
+        </a>
+        <a class="item" href="https://www.boutique-jacqueline.de/abiball-jugendweihe">
+          <span class="num">III</span>
+          <div><h3>Anlass</h3><p>Abiball, Jugendweihe und alle Tage, an denen es besonders sein soll.</p></div>
+          <span class="more">Entdecken →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="beratung-title" style="padding-top: 0">
+    <div class="wrap advice">
+      <p class="quote" id="beratung-title">Mode soll ein <em>Erlebnis</em> sein. Und sie soll passen.</p>
+      <div class="advice-list">
+        <div><b>Zeit für Sie</b><span>Wir beraten Sie persönlich und in Ruhe, statt Sie allein zwischen Kleiderstangen stehen zu lassen.</span></div>
+        <div><b>Für jede Figur</b><span>Auch wer besondere Größen sucht, findet bei uns Unterstützung.</span></div>
+        <div><b>Große Auswahl</b><span>Ausgewählte Teile für Damen und Herren, für jeden Anlass.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="occasion" id="anlass" aria-labelledby="anlass-title">
+    <div class="wrap occasion-inner">
+      <div>
+        <div class="label">Besondere Anlässe</div>
+        <h2 id="anlass-title">Der große Auftritt beginnt bei uns.</h2>
+        <p>Für Abiball und Jugendweihe finden Sie bei uns das passende Outfit und eine Beratung, die sich Zeit nimmt. Für Jugendliche, Eltern und die ganze Familie.</p>
+        <div style="margin-top: 32px"><a class="btn btn-light" href="tel:+493364452529">Beratung vereinbaren</a></div>
+      </div>
+      <div class="occasion-tags" aria-hidden="true">
+        <span>Abiball</span>
+        <span>Jugendweihe</span>
+        <span>Abendmode</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="gutschein" aria-labelledby="gutschein-title">
+    <div class="wrap gift">
+      <div class="card-visual" aria-hidden="true">
+        <small>Geschenkkarte</small>
+        <span>Boutique<br>Jacqueline</span>
+        <b>Wunschbetrag</b>
+      </div>
+      <div class="gift-copy">
+        <div class="label">Geschenkkarte</div>
+        <h2 id="gutschein-title">Verschenken Sie Lieblingsstücke.</h2>
+        <p>Nicht sicher, was gefällt? Mit einer Geschenkkarte über einen Wunschbetrag sucht sich Ihre Liebste oder Ihr Liebster das passende Teil selbst aus.</p>
+        <a class="btn btn-plum" href="https://www.boutique-jacqueline.de/geschenkkarte">Geschenkkarte bestellen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="praise-band" aria-labelledby="stimmen-title">
+    <div class="wrap">
+      <div class="head" style="margin-bottom: 32px">
+        <div class="label">Was Kunden schätzen</div>
+        <h2 id="stimmen-title">Darum kommen sie wieder.</h2>
+      </div>
+      <div class="praise">
+        <span>Kompetente Beratung</span>
+        <span>Freundliche Atmosphäre</span>
+        <span>Große Auswahl</span>
+        <span>Hilfe bei besonderen Größen</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="besuch" aria-labelledby="besuch-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="label">Besuch</div>
+        <h2 id="besuch-title">Kommen Sie vorbei.</h2>
+        <p>Am schönsten ist Mode, wenn man sie anfassen und anprobieren kann. Wir freuen uns auf Sie.</p>
+      </div>
+      <div class="visit">
+        <div class="panel">
+          <a class="row" href="https://www.google.com/maps/search/?api=1&query=Lindenallee%2012%2C%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Adresse</b><span>Lindenallee 12, 15890 Eisenhüttenstadt</span></div>
+          </a>
+          <a class="row" href="tel:+493364452529">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b>Telefon</b><span>03364 452529</span></div>
+          </a>
+          <a class="row" href="mailto:j.geller66@gmx.de">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            <div><b>E-Mail</b><span>j.geller66@gmx.de</span></div>
+          </a>
+        </div>
+        <div class="panel">
+          <h3>Öffnungszeiten</h3>
+          <table class="hours">
+            <tr><td>Montag – Freitag</td><td>09:30 – 17:00 Uhr</td></tr>
+            <tr><td>Samstag</td><td>09:30 – 12:00 Uhr</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Boutique Jacqueline · Eisenhüttenstadt</span>
+    <a href="https://www.boutique-jacqueline.de/impressum-datenschutz">Impressum &amp; Datenschutz</a>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-plum" href="tel:+493364452529">Anrufen</a>
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Lindenallee%2012%2C%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Route</a>
+</div>
+
+</body>
+</html>
