@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>BroDöner Eisenhüttenstadt – Entwurf</title>
+<meta name="description" content="BroDöner in Eisenhüttenstadt: Döner, Dürüm, Pizza, Burger, Grill und Adana-Spieß. Familiengeführt, Diehloer Str. 54.">
+<style>
+  /* Layout: Grillhaus-Plakat – fette Großbuchstaben, Kohle-Schwarz mit Safran-Gelb und Tomatenrot, Speisen als große Kacheln */
+  :root {
+    --coal: #17130F;
+    --coal-2: #231D17;
+    --white: #FFFFFF;
+    --warm: #F7F2EA;
+    --line: #E7DED0;
+    --text: #1C1712;
+    --muted: #6B6156;
+    --saffron: #F2B230;
+    --saffron-hover: #E0A11F;
+    --tomato: #D8432B;
+    --herb: #3E7A3A;
+    --on-dark: #F7F1E6;
+    --on-dark-muted: #BFB3A3;
+    --display: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--white); color: var(--text); font-family: var(--body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 900; line-height: .98; letter-spacing: -0.01em; text-transform: uppercase; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 84px 0; scroll-margin-top: 70px; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--tomato); margin-bottom: 14px; }
+  h2 { font-size: clamp(34px, 6vw, 60px); }
+  .head { max-width: 660px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .head p { font-size: 18px; color: var(--muted); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 14px 26px; border-radius: 999px; font-weight: 800; font-size: 16px; text-decoration: none; transition: background .15s, color .15s, border-color .15s; }
+  .btn svg { width: 20px; height: 20px; }
+  .btn-saffron { background: var(--saffron); color: var(--coal); }
+  .btn-saffron:hover { background: var(--saffron-hover); }
+  .btn-ghost { border: 2px solid rgba(247,241,230,.35); color: var(--on-dark); }
+  .btn-ghost:hover { border-color: var(--on-dark); }
+  .btn-coal { background: var(--coal); color: var(--on-dark); }
+  .btn-coal:hover { background: var(--coal-2); }
+  a:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+
+  .draft { background: var(--saffron); color: var(--coal); font-size: 13px; text-align: center; padding: 8px 20px; font-weight: 600; }
+
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(23,19,15,.96); backdrop-filter: blur(8px); color: var(--on-dark); }
+  .site-header .wrap { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { font-family: var(--display); font-weight: 900; font-size: 24px; text-decoration: none; letter-spacing: -0.01em; }
+  .brand span { color: var(--saffron); }
+  .nav { display: flex; gap: 28px; }
+  .nav a { text-decoration: none; font-weight: 700; font-size: 15px; color: var(--on-dark-muted); padding: 8px 0; }
+  .nav a:hover { color: var(--on-dark); }
+  .header-btn { min-height: 44px; padding: 10px 18px; font-size: 15px; }
+
+  /* Hero */
+  .hero { background: var(--coal); color: var(--on-dark); padding: 72px 0 84px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; right: -120px; bottom: -160px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(242,178,48,.28), rgba(216,67,43,.12) 45%, transparent 70%); pointer-events: none; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(50px, 10vw, 112px); }
+  .hero h1 span { color: var(--saffron); display: block; }
+  .hero p { font-size: 19px; color: var(--on-dark-muted); max-width: 520px; margin-top: 24px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+  .rating { background: var(--coal-2); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 10px; }
+  .rating-score { font-family: var(--display); font-size: 88px; line-height: 1; color: var(--saffron); }
+  .stars { display: flex; gap: 4px; color: var(--saffron); }
+  .stars svg { width: 24px; height: 24px; }
+  .rating p { margin: 0; font-size: 15px; color: var(--on-dark-muted); max-width: none; }
+  .rating hr { border: 0; border-top: 1px solid rgba(255,255,255,.1); margin: 8px 0; width: 100%; }
+  .rating-row { display: flex; justify-content: space-between; font-size: 15px; }
+  .rating-row b { color: var(--on-dark); }
+
+  /* Ticker */
+  .ticker { background: var(--tomato); color: #fff; overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; gap: 40px; padding: 16px 0; font-family: var(--display); font-weight: 900; font-size: 22px; text-transform: uppercase; animation: slide 30s linear infinite; }
+  .ticker-track span::after { content: "✦"; margin-left: 40px; color: var(--saffron); }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } html { scroll-behavior: auto; } }
+
+  /* Speisen */
+  .menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .dish { border-radius: 22px; padding: 28px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; background: var(--warm); }
+  .dish h3 { font-size: 34px; }
+  .dish p { color: var(--muted); }
+  .dish.big { grid-column: span 2; background: var(--saffron); }
+  .dish.big p { color: var(--coal); }
+  .dish.dark { background: var(--coal); color: var(--on-dark); }
+  .dish.dark p { color: var(--on-dark-muted); }
+  .dish-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dish-tags span { font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.06); }
+  .dish.dark .dish-tags span { background: rgba(255,255,255,.1); }
+  .menu-note { margin-top: 22px; color: var(--muted); font-size: 15px; }
+
+  /* Warum */
+  .why-band { background: var(--warm); }
+  .why { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .why div { background: var(--white); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .why svg { width: 32px; height: 32px; color: var(--tomato); }
+  .why h3 { font-size: 20px; }
+  .why p { color: var(--muted); font-size: 15px; }
+
+  /* Stimmen */
+  .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .quote { border: 2px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
+  .quote blockquote { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.35; }
+  .quote cite { font-style: normal; color: var(--muted); font-size: 14px; }
+
+  /* Besuch */
+  .visit-band { background: var(--coal); color: var(--on-dark); }
+  .visit-band h2 { color: #fff; }
+  .visit-band .head p { color: var(--on-dark-muted); }
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel { background: var(--coal-2); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 22px; }
+  .panel h3 { font-size: 24px; color: #fff; }
+  .row { display: flex; gap: 16px; align-items: flex-start; text-decoration: none; }
+  .row svg { width: 24px; height: 24px; color: var(--saffron); flex: none; margin-top: 2px; }
+  .row b { display: block; font-size: 13px; color: var(--on-dark-muted); font-weight: 600; }
+  .row span { font-size: 18px; font-weight: 700; }
+  a.row:hover span { color: var(--saffron); }
+  .hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hours td { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .hours td:last-child { text-align: right; font-weight: 800; }
+  .hours tr:last-child td { border-bottom: 0; }
+  .hours .closed td:last-child { color: var(--on-dark-muted); font-weight: 600; }
+
+  footer { background: var(--coal); color: var(--on-dark-muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 26px; padding-bottom: 26px; }
+  footer nav { display: flex; gap: 20px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--on-dark); }
+
+  .mobile-bar { display: none; }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .hero-grid, .visit, .quotes { grid-template-columns: 1fr; }
+    .menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .why { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    section { padding: 64px 0; }
+    .header-btn { display: none; }
+    .menu, .why { grid-template-columns: 1fr; }
+    .dish.big { grid-column: auto; }
+    .dish, .quote, .panel, .rating { padding: 24px; }
+    .dish h3 { font-size: 30px; }
+    .quote blockquote { font-size: 20px; }
+    body { padding-bottom: 76px; }
+    .mobile-bar { display: flex; gap: 10px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; }
+    .mobile-bar .btn { flex: 1; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft">Entwurf von Dominik Reger · nicht die offizielle Seite von BroDöner</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Bro<span>Döner</span></a>
+    <nav class="nav" aria-label="Hauptmenü">
+      <a href="#speisen">Speisen</a>
+      <a href="#warum">Warum wir</a>
+      <a href="#stimmen">Bewertungen</a>
+      <a href="#besuch">Besuch</a>
+    </nav>
+    <a class="btn btn-saffron header-btn" href="https://www.google.com/maps/search/?api=1&query=BroD%C3%B6ner%20Diehloer%20Str.%2054%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Route</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="tag" style="color: var(--saffron)">Grillhaus · Eisenhüttenstadt</div>
+        <h1 id="hero-title">Hüttes Döner<span>vom Grill.</span></h1>
+        <p>Frisches Fleisch, frische Zutaten und ein Team, das immer gut drauf ist. Döner, Dürüm, Pizza, Burger und Spezialitäten vom Grill. Familiengeführt, direkt in Schönfließ.</p>
+        <div class="hero-actions">
+          <a class="btn btn-saffron" href="#speisen">Was gibt's?</a>
+          <a class="btn btn-ghost" href="#besuch">Öffnungszeiten</a>
+        </div>
+      </div>
+      <div class="rating">
+        <div class="rating-score">4,9</div>
+        <div class="stars" aria-label="5 Sterne">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <p>aus über 150 Google-Bewertungen</p>
+        <hr>
+        <div class="rating-row"><span>Preis pro Person</span><b>1–10 €</b></div>
+        <div class="rating-row"><span>Stadtgutschein</span><b>wird angenommen</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Döner</span><span>Dürüm</span><span>Pizza</span><span>Burger</span><span>Adana-Spieß</span><span>Bowls</span><span>Falafel</span><span>Grill</span>
+      <span>Döner</span><span>Dürüm</span><span>Pizza</span><span>Burger</span><span>Adana-Spieß</span><span>Bowls</span><span>Falafel</span><span>Grill</span>
+    </div>
+  </div>
+
+  <section id="speisen" aria-labelledby="speisen-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="tag">Speisen</div>
+        <h2 id="speisen-title">Hunger? Wir haben was.</h2>
+        <p>Türkische Grill-Spezialitäten und alles, was satt und glücklich macht.</p>
+      </div>
+      <div class="menu">
+        <div class="dish big">
+          <h3>Döner &amp; Dürüm</h3>
+          <div>
+            <p>Der Klassiker, mit qualitativ hochwertigem Fleisch und frischen Zutaten. Im Brot oder als Dürüm gerollt.</p>
+          </div>
+        </div>
+        <div class="dish dark">
+          <h3>Grill</h3>
+          <p>Adana-Spieß und weitere türkische Spezialitäten direkt vom Grill.</p>
+        </div>
+        <div class="dish">
+          <h3>Pizza</h3>
+          <p>Frisch belegt und ein echter Geheimtipp, sagen unsere Gäste.</p>
+        </div>
+        <div class="dish">
+          <h3>Burger</h3>
+          <p>Saftig, satt, schnell auf dem Tisch.</p>
+        </div>
+        <div class="dish">
+          <h3>Bowls &amp; Falafel</h3>
+          <p>Auch ohne Fleisch kommst du bei uns auf deine Kosten.</p>
+        </div>
+      </div>
+      <p class="menu-note">Die komplette Speisekarte mit Preisen gibt's direkt bei uns im Laden.</p>
+    </div>
+  </section>
+
+  <section class="why-band" id="warum" aria-labelledby="warum-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="tag">Warum BroDöner</div>
+        <h2 id="warum-title">Darum kommen alle wieder.</h2>
+      </div>
+      <div class="why">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1 3-2 4-2 7a2 2 0 0 0 4 0c0-1-.5-2-.5-2S17 9 17 13a5 5 0 0 1-10 0c0-4 3-6 5-11z"/></svg>
+          <h3>Frisch vom Grill</h3>
+          <p>Qualitatives Fleisch und frische Zutaten, jeden Tag.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+          <h3>Familiengeführt</h3>
+          <p>Ein Team, das gut drauf ist und dich nach dem zweiten Besuch kennt.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h3>Schnell</h3>
+          <p>In der Regel keine Wartezeit. Rein, bestellen, genießen.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+          <h3>Fairer Preis</h3>
+          <p>Satt werden für unter 10 €. Stadtgutschein? Kein Problem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stimmen" aria-labelledby="stimmen-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="tag">Bewertungen</div>
+        <h2 id="stimmen-title">Sagt nicht nur Bro.</h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote" style="margin:0">
+          <blockquote>„Die Döner sind Bombe. Die Pizzen sind der ober Hammer.“</blockquote>
+          <cite>Bärbel V. · Google-Bewertung, 5 Sterne</cite>
+        </figure>
+        <figure class="quote" style="margin:0">
+          <blockquote>„Die Jungs und Mädels sind immer gut drauf! Die Auswahl ist wirklich sehr gut und das Futter schmeckt jedesmal.“</blockquote>
+          <cite>Olaf R. · Google-Bewertung, 5 Sterne</cite>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit-band" id="besuch" aria-labelledby="besuch-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="tag" style="color: var(--saffron)">Besuch</div>
+        <h2 id="besuch-title">Komm vorbei.</h2>
+        <p>Direkt neben dem nah&amp;gut Lange Markt in Schönfließ.</p>
+      </div>
+      <div class="visit">
+        <div class="panel">
+          <a class="row" href="https://www.google.com/maps/search/?api=1&query=BroD%C3%B6ner%20Diehloer%20Str.%2054%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Adresse</b><span>Diehloer Str. 54, 15890 Eisenhüttenstadt</span></div>
+          </a>
+          <a class="row" href="https://www.instagram.com/brodoner15890/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+            <div><b>Instagram</b><span>@brodoner15890</span></div>
+          </a>
+          <a class="btn btn-saffron" href="https://www.google.com/maps/search/?api=1&query=BroD%C3%B6ner%20Diehloer%20Str.%2054%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Route planen</a>
+        </div>
+        <div class="panel">
+          <h3>Öffnungszeiten</h3>
+          <table class="hours">
+            <tr><td>Montag – Samstag</td><td>10:00 – 20:30 Uhr</td></tr>
+            <tr class="closed"><td>Sonntag</td><td>geschlossen</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 BroDöner · Eisenhüttenstadt</span>
+    <nav aria-label="Rechtliches">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-saffron" href="https://www.google.com/maps/search/?api=1&query=BroD%C3%B6ner%20Diehloer%20Str.%2054%2015890%20Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Route</a>
+  <a class="btn btn-coal" href="#speisen">Speisen</a>
+</div>
+
+</body>
+</html>
