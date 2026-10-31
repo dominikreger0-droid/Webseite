@@ -2,211 +2,491 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 34 34%27%3E%3Crect width=%2734%27 height=%2734%27 rx=%278%27 fill=%27%235ED3C8%27/%3E%3C/svg%3E">
-<title>ReinKonzept – Fensterreinigung Eisenhüttenstadt</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Streifenfreie Fensterreinigung und Unterhaltsreinigung in Eisenhüttenstadt, Frankfurt (Oder) und Cottbus.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<title>ReinKonzept EHST – Glas- und Unterhaltsreinigung in Eisenhüttenstadt</title>
+<meta name="description" content="ReinKonzept EHST: Glasreinigung und Unterhaltsreinigung für Unternehmen, Praxen und Privathaushalte in Eisenhüttenstadt, Frankfurt (Oder) und Cottbus. 5,0 Sterne bei Google.">
 <style>
-body{margin:0;background:#F4F8FA}
-a{color:#0B2A3C}a:hover{color:#0E7C86}
-.rk-btn:hover{filter:brightness(1.08)}
-.rk-ghost:hover{background:rgba(255,255,255,0.12)}
+  /* Layout: klar und hell wie frisch geputztes Glas – Weiß, Navy und Logo-Blau, ein Glanz-Streifen als wiederkehrendes Detail */
+  :root {
+    --white: #FFFFFF;
+    --glass: #F2F7FD;
+    --line: #DCE6F2;
+    --text: #0F1E36;
+    --muted: #556580;
+    --navy: #0B2F6B;
+    --navy-2: #0A2554;
+    --blue: #1E6FE0;
+    --blue-hover: #165CC0;
+    --blue-soft: #E3EEFC;
+    --grey: #8A94A3;
+    --whatsapp: #1FA855;
+    --whatsapp-hover: #188F48;
+    --star: #F5B301;
+    --on-dark: #F2F6FC;
+    --on-dark-muted: #AFC0DA;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--white); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 84px 0; scroll-margin-top: 76px; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  h2 { font-size: clamp(30px, 4.6vw, 44px); font-weight: 800; color: var(--navy); }
+  .head { max-width: 640px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .head p { font-size: 18px; color: var(--muted); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; border: 0; cursor: pointer; font-family: inherit; transition: background .15s, color .15s, border-color .15s; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: var(--blue-hover); }
+  .btn-wa { background: var(--whatsapp); color: #fff; }
+  .btn-wa:hover { background: var(--whatsapp-hover); }
+  .btn-line { background: transparent; border: 2px solid var(--line); color: var(--navy); }
+  .btn-line:hover { border-color: var(--blue); color: var(--blue); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .site-header .wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: 46px; height: auto; }
+  .brand span { font-weight: 800; font-size: 19px; color: var(--navy); letter-spacing: -0.01em; }
+  .brand span b { color: var(--blue); }
+  .nav { display: flex; gap: 26px; }
+  .nav a { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--muted); padding: 8px 0; }
+  .nav a:hover { color: var(--blue); }
+  .header-actions { display: flex; align-items: center; gap: 14px; }
+  .header-phone { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 15px; color: var(--navy); white-space: nowrap; }
+  .header-phone svg { width: 18px; height: 18px; color: var(--blue); }
+  .header-wa { min-height: 44px; padding: 10px 16px; font-size: 15px; }
+
+  /* Hero */
+  .hero { background: linear-gradient(180deg, var(--glass) 0%, var(--white) 100%); padding: 72px 0 80px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(40px, 6.4vw, 66px); font-weight: 800; color: var(--navy); }
+  .hero h1 span { color: var(--blue); }
+  .hero-copy > p { font-size: 19px; color: var(--muted); margin-top: 22px; max-width: 540px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; font-size: 14px; font-weight: 600; color: var(--navy); }
+  .chip svg { width: 16px; height: 16px; color: var(--blue); }
+  .rating-line { display: flex; align-items: center; gap: 10px; margin-top: 22px; text-decoration: none; width: fit-content; }
+  .stars { display: flex; gap: 2px; color: var(--star); }
+  .stars svg { width: 20px; height: 20px; }
+  .rating-line span { font-size: 15px; color: var(--muted); }
+  .rating-line .stars { color: var(--star); }
+  .rating-line b { color: var(--navy); }
+  a.rating-line:hover b { color: var(--blue); }
+
+  .hero-visual { position: relative; aspect-ratio: 1 / 1.05; max-width: 460px; width: 100%; justify-self: end; }
+  .window { position: absolute; inset: 0 8% 10% 0; border-radius: 22px; background: linear-gradient(135deg, #CFE3FB 0%, #EAF3FE 45%, #BFD8F7 100%); border: 10px solid var(--navy); overflow: hidden; box-shadow: 0 30px 60px rgba(11,47,107,.18); }
+  .window::before, .window::after { content: ""; position: absolute; background: var(--navy); }
+  .window::before { left: 50%; top: 0; bottom: 0; width: 10px; transform: translateX(-50%); }
+  .window::after { top: 50%; left: 0; right: 0; height: 10px; transform: translateY(-50%); }
+  .shine { position: absolute; top: -20%; left: -60%; width: 40%; height: 140%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent); transform: rotate(20deg); animation: shine 4.5s ease-in-out infinite; }
+  @keyframes shine { 0%, 30% { left: -60%; } 70%, 100% { left: 130%; } }
+  .hero-logo { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); width: 46%; aspect-ratio: 1 / 1; object-fit: contain; background: var(--white); border-radius: 50%; padding: 18px; box-shadow: 0 10px 30px rgba(11,47,107,.15); z-index: 1; }
+  .call-card { position: absolute; right: 0; bottom: 0; background: var(--white); border-radius: 16px; padding: 16px 20px; box-shadow: 0 14px 34px rgba(11,47,107,.16); display: flex; flex-direction: column; gap: 2px; text-decoration: none; z-index: 2; }
+  .call-card small { font-size: 13px; color: var(--muted); }
+  .call-card b { font-size: 20px; color: var(--navy); }
+  .call-card span { font-size: 13px; color: var(--whatsapp); font-weight: 600; }
+
+  /* Gebiet */
+  .area { background: var(--navy); color: var(--on-dark); }
+  .area .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 28px; padding-top: 18px; padding-bottom: 18px; font-size: 15px; }
+  .area span { color: var(--on-dark-muted); }
+  .area b { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+  .area svg { width: 16px; height: 16px; color: #7FB2F5; }
+
+  /* Leistungen */
+  .services { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .service { border: 1px solid var(--line); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .service-icon { width: 54px; height: 54px; border-radius: 14px; background: var(--blue-soft); color: var(--blue); display: flex; align-items: center; justify-content: center; }
+  .service-icon svg { width: 28px; height: 28px; }
+  .service h3 { font-size: 26px; color: var(--navy); font-weight: 800; }
+  .service > p { color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { background: var(--glass); color: var(--navy); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 8px; }
+  .checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; }
+  .checks li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat; }
+  .service .btn { align-self: flex-start; margin-top: auto; }
+
+  /* Für wen */
+  .who-band { background: var(--glass); }
+  .who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .who div { background: var(--white); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .who svg { width: 30px; height: 30px; color: var(--blue); }
+  .who h3 { font-size: 20px; color: var(--navy); }
+  .who p { color: var(--muted); font-size: 15px; }
+
+  /* Preise */
+  .price-box { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; border: 2px solid var(--blue); border-radius: 24px; padding: 36px; }
+  .price-big { font-size: clamp(56px, 9vw, 88px); font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -0.03em; }
+  .price-big small { display: block; font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-top: 8px; }
+  .price-text { display: flex; flex-direction: column; gap: 12px; }
+  .price-text h3 { font-size: 24px; color: var(--navy); }
+  .price-text p { color: var(--muted); }
+
+  /* Ablauf */
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+  .step { position: relative; padding-top: 58px; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; top: 0; left: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .step h3 { font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .step p { color: var(--muted); }
+
+  /* Bewertungen */
+  .reviews-band { background: var(--navy); color: var(--on-dark); }
+  .reviews { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
+  .score { font-size: clamp(90px, 15vw, 150px); font-weight: 800; line-height: .9; color: #fff; letter-spacing: -0.04em; }
+  .reviews .stars svg { width: 28px; height: 28px; }
+  .reviews h2 { color: #fff; }
+  .reviews p { color: var(--on-dark-muted); font-size: 18px; margin-top: 14px; max-width: 520px; }
+  .reviews .btn { margin-top: 24px; background: #fff; color: var(--navy); }
+  .reviews .btn:hover { background: var(--blue-soft); }
+
+  /* Anfrage */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  .panel { border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; }
+  .panel h3 { font-size: 22px; color: var(--navy); }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 14px; font-weight: 700; color: var(--navy); }
+  input, select, textarea { font: inherit; font-size: 16px; color: var(--text); background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; }
+  textarea { min-height: 96px; resize: vertical; }
+  .form-note { font-size: 13px; color: var(--muted); }
+  .hint { font-size: 14px; color: #B42318; }
+  .row { display: flex; gap: 14px; align-items: flex-start; text-decoration: none; }
+  .row svg { width: 24px; height: 24px; color: var(--blue); flex: none; margin-top: 2px; }
+  .row b { display: block; font-size: 13px; color: var(--muted); font-weight: 600; }
+  .row span { font-size: 18px; font-weight: 700; color: var(--navy); }
+  a.row:hover span { color: var(--blue); }
+  .min-note { background: var(--blue-soft); color: var(--navy); border-radius: 12px; padding: 14px 16px; font-size: 15px; font-weight: 600; }
+
+  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 26px; padding-bottom: 26px; }
+  footer nav { display: flex; gap: 20px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--blue); }
+
+  .mobile-bar { display: none; }
+
+  @media (max-width: 980px) {
+    .nav { display: none; }
+    .hero-grid, .services, .contact, .reviews { grid-template-columns: 1fr; }
+    .hero-visual { justify-self: center; max-width: 380px; }
+    .who, .steps { grid-template-columns: 1fr; }
+    .reviews { gap: 16px; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 64px 0; }
+    .header-phone, .header-wa { display: none; }
+    .price-box { grid-template-columns: 1fr; gap: 16px; padding: 26px; }
+    .service, .panel { padding: 24px; }
+    .hero { padding-top: 52px; }
+    body { padding-bottom: 76px; }
+    .mobile-bar { display: flex; gap: 10px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; }
+    .mobile-bar .btn { flex: 1; box-shadow: 0 8px 24px rgba(11,47,107,.25); }
+  }
+  @media (prefers-reduced-motion: reduce) { .shine { animation: none; display: none; } html { scroll-behavior: auto; } }
 </style>
-<style>html{scroll-behavior:smooth}</style>
 </head>
 <body>
-<div style="font-family: 'Manrope', system-ui, sans-serif; color: #0B2A3C; background: #F4F8FA; min-width: 0">
 
-<!-- NAV -->
-<header style="background: #0B2A3C">
-<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF">
-<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="8" fill="#5ED3C8"></rect><path d="M9 10h7v14H9zM18 10h7v6h-7zM18 18h7v6h-7z" fill="#0B2A3C"></path></svg>
-<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">ReinKonzept<span style="color: #5ED3C8">.</span></span>
-</a>
-<nav aria-label="Hauptnavigation" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px; font-weight: 600">
-<a href="#leistungen" style="color: #CFE3EA; text-decoration: none">Leistungen</a>
-<a href="#garantie" style="color: #CFE3EA; text-decoration: none">Garantie</a>
-<a href="#region" style="color: #CFE3EA; text-decoration: none">Einsatzgebiet</a>
-<a class="rk-btn" href="https://wa.me/4917615759897" style="background: #5ED3C8; color: #0B2A3C; text-decoration: none; padding: 12px 20px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Angebot anfragen</a>
-</nav>
-</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="ReinKonzept EHST, zum Seitenanfang">
+      <img src="logo-icon.png" alt="">
+      <span>Reinkonzept<b>EHST</b></span>
+    </a>
+    <nav class="nav" aria-label="Hauptmenü">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#fuer-wen">Für wen</a>
+      <a href="#preise">Preise</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#anfrage">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+491629341281">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        0162 9341281
+      </a>
+      <a class="btn btn-wa header-wa" href="https://wa.me/491629341281" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
 </header>
 
-<!-- HERO -->
-<section id="top" style="background: #0B2A3C; color: #FFFFFF; overflow: hidden">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5ED3C8">Glas- &amp; Gebäudereinigung · Ostbrandenburg</p>
-<h1 style="margin: 0; font-size: clamp(42px, 6vw, 76px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em">Glasklare Fenster.<br><span style="color: #5ED3C8">Saubere Räume.</span></h1>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #CFE3EA; max-width: 520px">Streifenfreie Fensterreinigung und zuverlässige Unterhaltsreinigung für Privathaushalte, Praxen und Büros in Eisenhüttenstadt, Frankfurt (Oder) und Cottbus.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 14px">
-<a class="rk-btn" href="https://wa.me/4917615759897" style="display: inline-flex; align-items: center; gap: 10px; background: #5ED3C8; color: #0B2A3C; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 26px; border-radius: 999px; min-height: 44px; box-sizing: border-box">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
-Per WhatsApp anfragen</a>
-<a class="rk-ghost" href="tel:+4917615759897" style="display: inline-flex; align-items: center; gap: 10px; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 26px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); min-height: 44px; box-sizing: border-box">0176 15759897</a>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px; padding-top: 8px; font-size: 15px; color: #CFE3EA">
-<span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Kostenlose Nachreinigung</span>
-<span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Schnelle Termine</span>
-<span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Fester Ansprechpartner</span>
-</div>
-</div>
-<div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
-<div style="position: relative; width: 100%; max-width: 440px; aspect-ratio: 4 / 5; border-radius: 28px; background: #12384E; border: 1px solid rgba(94,211,200,0.25); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 22px; box-sizing: border-box">
-<div style="border-radius: 14px; background: #E8F6F7"></div>
-<div style="border-radius: 14px; background: #E8F6F7; position: relative; overflow: hidden"><div style="position: absolute; left: -20%; top: 30%; width: 140%; height: 18px; background: #FFFFFF; transform: rotate(-28deg); opacity: 0.9"></div></div>
-<div style="border-radius: 14px; background: #E8F6F7; position: relative; overflow: hidden"><div style="position: absolute; left: -20%; top: 55%; width: 140%; height: 10px; background: #FFFFFF; transform: rotate(-28deg); opacity: 0.9"></div></div>
-<div style="border-radius: 14px; background: #E8F6F7"></div>
-<div style="position: absolute; left: -18px; bottom: 36px; background: #FFFFFF; color: #0B2A3C; border-radius: 16px; padding: 16px 20px; box-shadow: 0 18px 40px rgba(0,0,0,0.25); display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 13px; font-weight: 600; color: #4A6573">Sauberkeitsgarantie</span>
-<span style="font-size: 16px; font-weight: 800">Kostenlose Nachreinigung</span>
-</div>
-</div>
-</div>
-</div>
-</section>
+<main id="top">
 
-<!-- LEISTUNGEN -->
-<section id="leistungen" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 40px; box-sizing: border-box">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 48px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0E7C86">Leistungen</p>
-<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em">Zwei Leistungen. Ein Anspruch: makellos.</h2>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
-<article style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 1px 0 rgba(11,42,60,0.06)">
-<div style="width: 56px; height: 56px; border-radius: 16px; background: #E1F5F3; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 3v18M3 12h18"></path></svg>
-</div>
-<h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Fenster- &amp; Glasreinigung</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4A6573">Fenster, Wintergärten und Glasfassaden – wir entfernen Schmutz, Staub, Wasserflecken und hartnäckige Ablagerungen. Für Zuhause, Büro und Gewerbe.</p>
-<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; font-weight: 600">
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Streifenfrei – inklusive Rahmen</li>
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Wintergärten &amp; Glasfassaden</li>
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Privat- und Gewerbekunden</li>
-</ul>
-<p style="margin: 8px 0 0; font-size: 15px; color: #4A6573">Preis nach <strong style="color: #0B2A3C; font-size: 20px">unverbindlichem Angebot</strong></p>
-</article>
-<article style="flex: 1 1 420px; min-width: 0; background: #0B2A3C; color: #FFFFFF; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 20px">
-<div style="width: 56px; height: 56px; border-radius: 16px; background: #12384E; display: flex; align-items: center; justify-content: center">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"></path></svg>
-</div>
-<h3 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em">Unterhaltsreinigung</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #CFE3EA">Regelmäßige Reinigung für Praxen, Büros und Privathäuser – damit Ihre Räume dauerhaft gepflegt, hygienisch und einladend bleiben.</p>
-<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; font-weight: 600">
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Individuell geplante Termine</li>
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Gleichbleibend hohe Qualität</li>
-<li style="display: flex; gap: 10px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5ED3C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Diskret &amp; zuverlässig</li>
-</ul>
-<p style="margin: 8px 0 0; font-size: 15px; color: #CFE3EA">Preis nach <strong style="color: #FFFFFF; font-size: 20px">individuellem Angebot</strong></p>
-</article>
-</div>
-</section>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Glas- und Unterhaltsreinigung</div>
+        <h1 id="hero-title">Saubere Sicht. <span>Saubere Räume.</span></h1>
+        <p>Professionelle Reinigung für Unternehmen, Praxen und Privathaushalte in Eisenhüttenstadt, Frankfurt (Oder) und Cottbus. Zuverlässig, gründlich und ohne Aufwand für Sie.</p>
+        <div class="hero-actions">
+          <a class="btn btn-blue" href="#anfrage">Angebot anfragen</a>
+          <a class="btn btn-wa" href="https://wa.me/491629341281?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Reinigung." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            Per WhatsApp schreiben
+          </a>
+        </div>
+        <div class="chips">
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Schnelle Termine</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Streifenfrei</span>
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Direkter Kontakt</span>
+        </div>
+        <a class="rating-line" href="https://www.google.com/search?q=ReinKonzept+EHST+Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">
+          <span class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </span>
+          <span><b>5,0 bei Google</b> · Bewertungen ansehen</span>
+        </a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="window"><div class="shine"></div></div>
+        <img class="hero-logo" src="logo-icon.png" alt="">
+        <a class="call-card" href="tel:+491629341281" tabindex="-1">
+          <small>Direkt anrufen</small>
+          <b>0162 9341281</b>
+          <span>oder per WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<!-- ABLAUF -->
-<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; box-sizing: border-box">
-<div style="background: #E1F5F3; border-radius: 28px; padding: 48px 40px; display: flex; flex-direction: column; gap: 32px">
-<h2 style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.03em">In drei Schritten zu klaren Fenstern</h2>
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
-<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 44px; font-weight: 800; color: #0E7C86; line-height: 1">01</span>
-<h3 style="margin: 0; font-size: 20px; font-weight: 800">Nachricht schreiben</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34515F">Per WhatsApp, Telefon oder E-Mail – gern mit einem Foto der Fenster.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 44px; font-weight: 800; color: #0E7C86; line-height: 1">02</span>
-<h3 style="margin: 0; font-size: 20px; font-weight: 800">Angebot erhalten</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34515F">Sie bekommen ein unverbindliches, transparentes Angebot.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 44px; font-weight: 800; color: #0E7C86; line-height: 1">03</span>
-<h3 style="margin: 0; font-size: 20px; font-weight: 800">Durchblick genießen</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34515F">Wir kommen zum Wunschtermin und reinigen gründlich.</p>
-</div>
-</div>
-</div>
-</section>
+  <div class="area" aria-label="Einsatzgebiet">
+    <div class="wrap">
+      <span>Wir reinigen in:</span>
+      <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Eisenhüttenstadt</b>
+      <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Frankfurt (Oder)</b>
+      <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cottbus</b>
+    </div>
+  </div>
 
-<!-- GARANTIE -->
-<section id="garantie" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0E7C86">Unser Versprechen</p>
-<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em">Nicht sauber genug? Wir kommen kostenlos wieder.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4A6573">Ihre Zufriedenheit steht an erster Stelle – deshalb geben wir Ihnen zwei feste Garantien.</p>
-</div>
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="background: #FFFFFF; border-radius: 20px; padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start">
-<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<h3 style="margin: 0; font-size: 20px; font-weight: 800">Sauberkeitsgarantie</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A6573">Ist es nicht so sauber wie abgemacht, reinigen wir kostenlos nach.</p>
-</div>
-</div>
-<div style="background: #FFFFFF; border-radius: 20px; padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start">
-<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<h3 style="margin: 0; font-size: 20px; font-weight: 800">Nachbesserungs-Versprechen</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A6573">Ihre Wünsche fließen in jede Folgereinigung ein – damit es beim nächsten Mal noch besser passt.</p>
-</div>
-</div>
-</div>
-</section>
+  <section id="leistungen" aria-labelledby="leistungen-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Leistungen</div>
+        <h2 id="leistungen-title">Zwei Leistungen. Beide richtig gut.</h2>
+        <p>Für Betriebe und Privathaushalte, einmalig oder regelmäßig. Was gemacht wird und was es kostet, klären wir vorher. Keine Überraschungen.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg></div>
+          <h3>Glasreinigung</h3>
+          <p>Schmutz, Staub, Wasserflecken und hartnäckige Ablagerungen: Wir sorgen für klare Sicht, im Betrieb genauso wie zu Hause.</p>
+          <div class="tags"><span>Fenster</span><span>Glasflächen</span><span>Glasfassaden</span><span>Wintergärten</span><span>Schaufenster</span><span>Rahmen</span></div>
+          <ul class="checks">
+            <li>Streifenfreie Glasreinigung</li>
+            <li>Rahmen und Fensterbänke inklusive</li>
+            <li>Einmalig oder im festen Rhythmus</li>
+          </ul>
+          <a class="btn btn-blue" href="#anfrage">Glasreinigung anfragen</a>
+        </article>
+        <article class="service">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>Unterhaltsreinigung</h3>
+          <p>Saubere Räume sind der erste Eindruck für Kunden, Patienten und Mitarbeiter. Wir halten Ihre Räume regelmäßig gepflegt.</p>
+          <div class="tags"><span>Büros</span><span>Praxen</span><span>Treppenhäuser</span><span>Geschäftsräume</span><span>Privathaushalte</span></div>
+          <ul class="checks">
+            <li>Feste Termine, auf die Sie sich verlassen können</li>
+            <li>Umfang nach Ihren Wünschen</li>
+            <li>Ein fester Ansprechpartner</li>
+          </ul>
+          <a class="btn btn-blue" href="#anfrage">Unterhaltsreinigung anfragen</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<!-- STIMME -->
-<section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; box-sizing: border-box">
-<figure style="margin: 0; border-top: 2px solid #0B2A3C; padding-top: 40px; display: flex; flex-direction: column; gap: 20px">
-<blockquote style="margin: 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.35; font-weight: 700; letter-spacing: -0.02em; max-width: 920px">„ReinkonzeptEHST hat unsere Erwartungen übertroffen! Die Fenster sind makellos und der Service war super schnell und unkompliziert.“</blockquote>
-<figcaption style="font-size: 16px; font-weight: 600; color: #4A6573">Kunde aus Eisenhüttenstadt</figcaption>
-</figure>
-</section>
+  <section class="who-band" id="fuer-wen" aria-labelledby="wer-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Für wen</div>
+        <h2 id="wer-title">Für alle, die Wert auf Sauberkeit legen.</h2>
+      </div>
+      <div class="who">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          <h3>Unternehmen</h3>
+          <p>Büros, Läden und Schaufenster, die einen guten ersten Eindruck machen sollen.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/></svg>
+          <h3>Praxen</h3>
+          <p>Gepflegte Räume, in denen sich Patienten wohlfühlen.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>
+          <h3>Privathaushalte</h3>
+          <p>Saubere Fenster, ohne dass Sie selbst auf die Leiter müssen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- REGION -->
-<section id="region" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
-<h2 style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.03em">Im Einsatz in Ihrer Region</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
-<a href="#kontakt" style="background: #FFFFFF; border-radius: 20px; padding: 28px; text-decoration: none; display: flex; justify-content: space-between; align-items: center; min-height: 44px">
-<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 22px; font-weight: 800">Eisenhüttenstadt</span><span style="font-size: 15px; color: #4A6573">Unser Standort</span></span>
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-</a>
-<a href="#kontakt" style="background: #FFFFFF; border-radius: 20px; padding: 28px; text-decoration: none; display: flex; justify-content: space-between; align-items: center; min-height: 44px">
-<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 22px; font-weight: 800">Frankfurt (Oder)</span><span style="font-size: 15px; color: #4A6573">und Umgebung</span></span>
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-</a>
-<a href="#kontakt" style="background: #FFFFFF; border-radius: 20px; padding: 28px; text-decoration: none; display: flex; justify-content: space-between; align-items: center; min-height: 44px">
-<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 22px; font-weight: 800">Cottbus</span><span style="font-size: 15px; color: #4A6573">und Umgebung</span></span>
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-</a>
-</div>
-</section>
+  <section id="preise" aria-labelledby="preise-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Preise</div>
+        <h2 id="preise-title">Faire Preise, vorher klar abgesprochen.</h2>
+      </div>
+      <div class="price-box">
+        <div class="price-big">ab 75 €<small>Mindestauftragswert</small></div>
+        <div class="price-text">
+          <h3>Ihr Angebot, passend zu Ihrem Objekt</h3>
+          <p>Jedes Objekt ist anders. Schicken Sie uns kurz, was gereinigt werden soll, gern mit Fotos per WhatsApp. Sie bekommen ein klares Angebot, bevor wir loslegen. Aufträge nehmen wir ab einem Auftragswert von 75 € an.</p>
+          <div><a class="btn btn-blue" href="#anfrage">Kostenloses Angebot anfordern</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- KONTAKT -->
-<section id="kontakt" style="padding: 56px 24px 96px">
-<div style="max-width: 1200px; margin: 0 auto; background: #0B2A3C; color: #FFFFFF; border-radius: 32px; padding: 56px 48px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<h2 style="margin: 0; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Bereit für den klaren Durchblick?</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #CFE3EA">Am schnellsten antworten wir per WhatsApp – meist noch am selben Tag.</p>
-</div>
-<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<a class="rk-btn" href="https://wa.me/4917615759897" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #5ED3C8; color: #0B2A3C; text-decoration: none; font-weight: 800; font-size: 18px; padding: 18px 24px; border-radius: 999px; min-height: 44px">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
-WhatsApp schreiben</a>
-<a class="rk-ghost" href="tel:+4917615759897" style="display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); min-height: 44px">Anrufen: 0176 15759897</a>
-<a class="rk-ghost" href="mailto:reinkonzept.ehst@gmail.com" style="display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); min-height: 44px">reinkonzept.ehst@gmail.com</a>
-</div>
-</div>
-</section>
+  <section class="who-band" id="ablauf" aria-labelledby="ablauf-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Ablauf</div>
+        <h2 id="ablauf-title">In drei Schritten zu sauberem Glas.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Anfrage senden</h3><p>Per Formular, Anruf oder WhatsApp. Gern mit Fotos vom Objekt.</p></div>
+        <div class="step"><h3>Angebot erhalten</h3><p>Sie wissen vorher genau, was gemacht wird und was es kostet.</p></div>
+        <div class="step"><h3>Zurücklehnen</h3><p>Wir kommen zum vereinbarten Termin und erledigen den Rest.</p></div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer style="border-top: 1px solid #D5E3E9">
-<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: #4A6573">
-<span>© 2026 ReinKonzept · Eisenhüttenstadt</span>
-<span style="display: flex; gap: 20px"><a href="#top">Impressum</a><a href="#top">Datenschutz</a></span>
-</div>
+  <section class="reviews-band" aria-labelledby="bewertung-title">
+    <div class="wrap reviews">
+      <div>
+        <div class="score">5,0</div>
+        <div class="stars" aria-label="5 von 5 Sternen" style="margin-top: 10px">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" style="color: #7FB2F5">Google-Bewertungen</div>
+        <h2 id="bewertung-title">Unsere Kunden geben uns volle Punktzahl.</h2>
+        <p>Alle Bewertungen auf unserem Google-Profil: 5 von 5 Sternen. Überzeugen Sie sich selbst.</p>
+        <a class="btn" href="https://www.google.com/search?q=ReinKonzept+EHST+Eisenh%C3%BCttenstadt" target="_blank" rel="noopener">Bewertungen auf Google ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="anfrage" aria-labelledby="anfrage-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Kontakt</div>
+        <h2 id="anfrage-title">Angebot anfragen.</h2>
+        <p>Am schnellsten geht es per WhatsApp. Sie bekommen in der Regel noch am selben Tag eine Antwort.</p>
+      </div>
+      <div class="contact">
+        <form class="panel" id="request-form" novalidate>
+          <h3>Ihre Anfrage</h3>
+          <div class="field">
+            <label for="f-service">Leistung</label>
+            <select id="f-service">
+              <option value="">Bitte wählen</option>
+              <option>Glasreinigung</option>
+              <option>Unterhaltsreinigung</option>
+              <option>Beides</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-type">Objekt</label>
+            <select id="f-type">
+              <option value="">Bitte wählen</option>
+              <option>Privathaushalt</option>
+              <option>Unternehmen / Büro</option>
+              <option>Praxis</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-place">Ort</label>
+            <input id="f-place" type="text" placeholder="z. B. Eisenhüttenstadt" autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-msg">Was soll gereinigt werden?</label>
+            <textarea id="f-msg" placeholder="z. B. 12 Fenster im Einfamilienhaus, innen und außen"></textarea>
+          </div>
+          <p class="hint" id="f-hint" hidden>Bitte Leistung, Objekt, Ort und Name angeben.</p>
+          <button type="submit" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            Anfrage per WhatsApp senden
+          </button>
+          <p class="form-note">Beim Absenden öffnet sich WhatsApp mit Ihrer Anfrage. Mindestauftragswert: 75 €.</p>
+        </form>
+        <div class="panel">
+          <h3>Direkter Kontakt</h3>
+          <a class="row" href="tel:+491629341281">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b>Telefon</b><span>0162 9341281</span></div>
+          </a>
+          <a class="row" href="https://wa.me/491629341281" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            <div><b>WhatsApp</b><span>+49 162 9341281</span></div>
+          </a>
+          <div class="row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Einsatzgebiet</b><span>Eisenhüttenstadt, Frankfurt (Oder) und Cottbus</span></div>
+          </div>
+          <div class="min-note">Aufträge ab 75 € Auftragswert.</div>
+          <img src="logo.png" alt="ReinKonzept EHST – Glas- und Unterhaltsreinigung" style="width: 220px; margin-top: 6px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ReinKonzept EHST · Glas- und Unterhaltsreinigung</span>
+    <nav aria-label="Rechtliches">
+      <a href="impressum/">Impressum</a>
+      <a href="datenschutz/">Datenschutz</a>
+    </nav>
+  </div>
 </footer>
 
+<div class="mobile-bar">
+  <a class="btn btn-wa" href="https://wa.me/491629341281" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-blue" href="tel:+491629341281">Anrufen</a>
 </div>
+
+<script>
+  var WA = '491629341281';
+  var form = document.getElementById('request-form');
+  var hint = document.getElementById('f-hint');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var service = document.getElementById('f-service').value;
+    var type = document.getElementById('f-type').value;
+    var place = document.getElementById('f-place').value.trim();
+    var name = document.getElementById('f-name').value.trim();
+    var msg = document.getElementById('f-msg').value.trim();
+    if (!service || !type || !place || !name) { hint.hidden = false; return; }
+    hint.hidden = true;
+    var text = 'Hallo ReinKonzept, ich möchte ein Angebot anfragen.\n\n'
+      + 'Leistung: ' + service + '\n'
+      + 'Objekt: ' + type + '\n'
+      + 'Ort: ' + place + '\n'
+      + 'Name: ' + name
+      + (msg ? '\n\n' + msg : '');
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+</script>
 </body>
 </html>
