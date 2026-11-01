@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Kleinschmidt Hausmeisterservice</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=Bungee&family=Bungee+Shade&display=swap">
+<style>
+/* Layout: seriöse Handwerker-Seite, die mit jedem Scrollmeter mehr kippt. --p (0–1) treibt das Chaos. */
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --fg:#1d2733; --muted:#5b6876; --line:#d9e0e7;
+  --brand:#1f5d8c; --brand-ink:#ffffff; --warn:#c8391e;
+  --neon1:#ff2bd6; --neon2:#ffe600; --neon3:#21f0ff; --casino:#14071f;
+  --f-display:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-body:"Barlow", "Segoe UI", Arial, sans-serif;
+  --f-crazy:"Bungee", "Impact", sans-serif;
+  --f-shade:"Bungee Shade", "Impact", sans-serif;
+  --p:0;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11171d; --surface:#18212a; --fg:#e6ecf1; --muted:#9aa8b5; --line:#2a3642;
+  --brand:#5aa3d6; --brand-ink:#0b1620; --warn:#ff7a5c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11171d; --surface:#18212a; --fg:#e6ecf1; --muted:#9aa8b5; --line:#2a3642;
+  --brand:#5aa3d6; --brand-ink:#0b1620; --warn:#ff7a5c; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0}
+section{padding-block:72px}
+
+/* Kopf */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:.01em}
+.logo .mark{width:34px;height:34px;border-radius:6px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-size:16px;transition:transform .2s}
+.phone{font-weight:600;color:var(--brand);font-variant-numeric:tabular-nums;white-space:nowrap}
+.status{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* Hero */
+.hero{padding-block:64px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.hero h1{font-size:clamp(40px,7vw,68px);margin-block:12px 16px}
+.hero p.lead{color:var(--muted);max-width:52ch;font-size:18px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{font:inherit;font-weight:600;border-radius:6px;padding:12px 20px;border:1px solid var(--brand);cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--brand);color:var(--brand-ink)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn:focus-visible{outline:3px solid var(--neon3);outline-offset:2px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;display:grid;gap:14px}
+.facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.facts div:last-child{border-bottom:0;padding-bottom:0}
+.facts span{color:var(--muted)}
+.facts b{font-variant-numeric:tabular-nums}
+
+/* Leistungen */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.svc h3{font-size:22px}
+.svc p{color:var(--muted);font-size:15px}
+.svc .price{margin-top:auto;font-weight:600;font-variant-numeric:tabular-nums}
+.svc small{color:var(--muted);font-size:12px}
+.section-h{font-size:clamp(30px,4.5vw,44px)}
+.fine{font-size:12px;color:var(--muted);margin-top:16px}
+
+/* Preisrechner (Stufe 2) */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:24px}
+.calc table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.calc td,.calc th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}
+.calc th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.calc td:last-child{text-align:right}
+.calc .odd{color:var(--warn);font-weight:600}
+.note{background:var(--surface);border-left:4px solid var(--warn);padding:16px 18px;border-radius:0 8px 8px 0}
+
+/* Bewertungen (Stufe 3) */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.rev{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.rev:nth-child(1){transform:rotate(calc(var(--p) * -2deg))}
+.rev:nth-child(2){transform:rotate(calc(var(--p) * 3deg)) translateY(calc(var(--p) * 10px))}
+.rev:nth-child(3){transform:rotate(calc(var(--p) * -5deg))}
+.rev:nth-child(4){transform:rotate(calc(var(--p) * 6deg))}
+.rev:nth-child(5){transform:rotate(calc(var(--p) * -8deg)) scale(calc(1 + var(--p) * .05))}
+.rev:nth-child(6){transform:rotate(calc(var(--p) * 10deg))}
+.stars{color:#e3a400;letter-spacing:2px}
+.rev cite{font-style:normal;font-size:13px;color:var(--muted);margin-top:auto}
+
+/* Über Kevin (Stufe 4) */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.hours{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.hours div{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.hours div:last-child{border:0}
+.hours .gk{background:repeating-linear-gradient(45deg,transparent 0 8px,color-mix(in srgb,var(--neon2) 30%,transparent) 8px 16px);font-weight:600}
+.about p+p{margin-top:12px}
+.about .glitch{font-family:var(--f-crazy);color:var(--neon1);font-size:14px}
+
+/* ===== Casino-Zone ===== */
+.casino{background:var(--casino);color:#fff;position:relative;overflow:hidden}
+.casino::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 15% 20%,rgba(255,43,214,.35),transparent 40%),
+  radial-gradient(circle at 85% 30%,rgba(33,240,255,.28),transparent 40%),
+  radial-gradient(circle at 50% 90%,rgba(255,230,0,.22),transparent 45%);pointer-events:none}
+.casino .wrap{position:relative}
+.marquee{font-family:var(--f-crazy);font-size:clamp(28px,6vw,60px);color:var(--neon2);text-shadow:0 0 12px var(--neon1),0 0 28px var(--neon1);text-align:center;line-height:1.05}
+.casino .sub{text-align:center;color:#ffd6f5;max-width:58ch;margin:14px auto 0}
+.bulbs{display:flex;justify-content:center;gap:10px;margin:22px 0;flex-wrap:wrap}
+.bulbs i{width:12px;height:12px;border-radius:50%;background:var(--neon2);box-shadow:0 0 10px var(--neon2);animation:blink 1s infinite}
+.bulbs i:nth-child(odd){animation-delay:.5s;background:var(--neon1);box-shadow:0 0 10px var(--neon1)}
+@keyframes blink{50%{opacity:.25}}
+
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;margin-top:28px;align-items:stretch}
+.ladder{background:#1f0d30;border:3px solid var(--neon2);border-radius:16px;padding:16px;display:flex;flex-direction:column-reverse;gap:8px;box-shadow:0 0 30px rgba(255,230,0,.35) inset}
+.rung{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;border:2px solid #4b2a66;background:#2a1440;transition:all .3s;font-weight:600}
+.rung .ico{font-size:24px;width:34px;text-align:center}
+.rung .lvl{margin-left:auto;font-family:var(--f-crazy);font-size:12px;color:#b98cd9}
+.rung.done{border-color:#6c3d8f;opacity:.6}
+.rung.on{background:var(--neon2);color:#1d0b2b;border-color:#fff;box-shadow:0 0 22px var(--neon2);transform:scale(1.04)}
+.rung.on .lvl{color:#1d0b2b}
+.rung.top{border-style:dashed;border-color:var(--neon1)}
+.panel{background:#1f0d30;border:3px solid var(--neon1);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 0 30px rgba(255,43,214,.3) inset}
+.screen{background:#000;border-radius:10px;padding:16px;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:8px;border:2px solid #3a1a52}
+.screen .big{font-family:var(--f-crazy);font-size:clamp(18px,3vw,26px);color:var(--neon2);line-height:1.15}
+.screen .small{color:#d9c2ec;font-size:15px}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.counters div{background:#2a1440;border-radius:8px;padding:10px;text-align:center}
+.counters span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b98cd9}
+.counters b{font-family:var(--f-crazy);font-size:18px;font-variant-numeric:tabular-nums}
+.spin{font-family:var(--f-crazy);font-size:22px;border:0;border-radius:999px;padding:16px;cursor:pointer;color:#1d0b2b;background:linear-gradient(180deg,#fff27a,var(--neon2) 60%,#d4b600);box-shadow:0 6px 0 #8a7600,0 0 24px var(--neon2);transition:transform .08s}
+.spin:active{transform:translateY(4px);box-shadow:0 2px 0 #8a7600,0 0 24px var(--neon2)}
+.spin:focus-visible{outline:3px solid var(--neon3);outline-offset:3px}
+.log{font-size:13px;color:#cdb3e3;max-height:110px;overflow:auto;display:flex;flex-direction:column-reverse;gap:4px}
+.shake{animation:shake .4s}
+@keyframes shake{20%{transform:translate(-6px,2px) rotate(-1deg)}40%{transform:translate(6px,-2px) rotate(1deg)}60%{transform:translate(-4px,1px)}80%{transform:translate(4px,0)}}
+.confetti{position:fixed;top:-20px;font-size:26px;pointer-events:none;z-index:50;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+/* Geschäftsbericht (Stufe 6) */
+.report{background:var(--neon2);color:#1d0b2b;transform:rotate(-1.5deg);margin-block:-10px}
+.report h2{font-family:var(--f-shade);font-size:clamp(28px,6vw,56px);font-weight:400}
+.bars{display:grid;gap:14px;margin-top:24px}
+.bar{display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:12px;align-items:center}
+.bar .track{height:28px;background:rgba(0,0,0,.12);border-radius:4px;overflow:visible;position:relative}
+.bar .fill{height:100%;background:#1d0b2b;border-radius:4px;display:flex;align-items:center;padding-left:8px;color:var(--neon2);font-weight:700;font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar .fill.over{width:140%!important;background:var(--neon1);color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{filter:brightness(1.4)}}
+.report .verdict{margin-top:24px;font-family:var(--f-crazy);font-size:clamp(16px,2.5vw,22px)}
+
+/* Finale */
+.finale{background:var(--neon1);color:#fff;text-align:center;overflow:hidden}
+.finale h2{font-family:var(--f-crazy);font-size:clamp(34px,9vw,96px);line-height:.95;text-shadow:4px 4px 0 #1d0b2b}
+.finale p{max-width:56ch;margin:18px auto 0;font-size:18px}
+.contact{display:inline-grid;gap:6px;background:#1d0b2b;padding:18px 22px;border-radius:12px;margin-top:28px;text-align:left;transform:rotate(2deg)}
+.contact b{color:var(--neon2)}
+.spinlogo{display:inline-block;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{background:#000;color:#9a8aa8;font-size:12px;text-align:center;padding-block:28px}
+footer p+p{margin-top:6px}
+
+/* Chaos, das an --p hängt */
+.tilt{transform:rotate(calc(var(--p) * var(--t,0deg)))}
+body.stage2 .logo .mark{transform:rotate(-8deg)}
+body.stage3 .logo .mark{transform:rotate(180deg);background:var(--neon1)}
+body.stage3 .status::after{content:" · gerade im Glückskeller"}
+body.stage4 header{background:var(--neon2);color:#1d0b2b}
+body.stage4 header .phone{color:#1d0b2b}
+body.stage4 header .status{color:#1d0b2b}
+
+@media (max-width:820px){
+  .hero,.calc,.about,.game{grid-template-columns:1fr}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:1fr}
+  .bar{grid-template-columns:1fr}
+  .phone{display:none}
+}
+@media (max-width:460px){.grid4{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rev,.tilt{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="mark">KK</span><span>Kleinschmidt Hausmeisterservice</span></div>
+    <div style="text-align:right">
+      <div class="phone">0815 / 47 11 23</div>
+      <div class="status">Hintertupfingen &amp; Umgebung</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Stufe 0: komplett seriös -->
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Meisterbetrieb (fast) · seit 2014</div>
+      <h1>Ihr Hausmeister für Hintertupfingen und Umgebung.</h1>
+      <p class="lead">Grünpflege, Winterdienst, Treppenhausreinigung und Kleinreparaturen. Zuverlässig, pünktlich und zu fairen Preisen. Kevin Kleinschmidt kümmert sich persönlich um Ihr Objekt.</p>
+      <div class="btns">
+        <a class="btn primary" href="#leistungen">Leistungen ansehen</a>
+        <a class="btn ghost" href="#kontakt">Angebot anfragen</a>
+      </div>
+    </div>
+    <div class="facts" aria-label="Kurzinfos">
+      <div><span>Betreute Objekte</span><b>38</b></div>
+      <div><span>Reaktionszeit</span><b>&lt; 24 Std.</b></div>
+      <div><span>Einsatzgebiet</span><b>25 km</b></div>
+      <div><span>Kundenzufriedenheit</span><b>4,8 / 5</b></div>
+    </div>
+  </div>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <div class="eyebrow">Leistungen</div>
+      <h2 class="section-h">Alles rund ums Haus. Aus einer Hand.</h2>
+      <div class="grid4">
+        <div class="svc"><h3>Grünpflege</h3><p>Rasenmähen, Heckenschnitt, Laub entfernen, Beete pflegen.</p><div class="price">ab 28,00 € / Std.</div></div>
+        <div class="svc"><h3>Winterdienst</h3><p>Räumen und Streuen nach Satzung, ab 6 Uhr morgens.</p><div class="price">ab 45,00 € / Monat</div></div>
+        <div class="svc"><h3>Treppenhaus</h3><p>Wöchentliche Reinigung von Treppen, Geländern und Fenstern.</p><div class="price">ab 19,00 € / Termin</div></div>
+        <div class="svc"><h3>Kleinreparaturen</h3><p>Glühbirnen, Türschlösser, tropfende Wasserhähne.</p><div class="price">ab 32,00 € / Std.</div><small>Zahlung gern in Münzen.</small></div>
+      </div>
+      <p class="fine">Alle Preise inkl. MwSt. Anfahrt im Ortsgebiet kostenlos. Barzahlung bevorzugt, vor allem 1- und 2-Euro-Stücke.</p>
+    </div>
+  </section>
+
+  <!-- Stufe 1: es wird seltsam -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Transparente Preise</div>
+      <h2 class="section-h">Was kostet mich das eigentlich?</h2>
+      <div class="calc">
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Leistung</th><th>Euro</th><th>Entspricht</th></tr></thead>
+            <tbody>
+              <tr><td>1 Std. Rasenmähen</td><td>28,00 €</td><td>2,8 SparMax-Menüs</td></tr>
+              <tr><td>Winterdienst / Monat</td><td>45,00 €</td><td>90 Freispiele</td></tr>
+              <tr><td>Treppenhaus</td><td>19,00 €</td><td>19 Apfeltaschen</td></tr>
+              <tr><td>Wasserhahn reparieren</td><td>32,00 €</td><td class="odd">1 Abend, wenn's gut läuft</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          <p><b>Hinweis zur Umrechnung:</b> Kevin denkt nicht in Euro. Kevin denkt in Menüs und Spielen. Wir finden, das sollten Sie wissen, bevor Sie einen Auftrag erteilen.</p>
+          <p style="margin-top:10px;color:var(--muted);font-size:14px">Wechselkurs Stand heute: 1 SparMax-Menü = 10 € = 20 Spiele à 50 Cent = 1 kurzer Moment echter Hoffnung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stufe 2: Bewertungen kippen -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Kundenstimmen</div>
+      <h2 class="section-h tilt" style="--t:-3deg">Das sagen unsere Kunden</h2>
+      <div class="reviews">
+        <div class="rev"><div class="stars">★★★★★</div><p>Sehr zuverlässig, die Hecke ist top geschnitten. Gerne wieder.</p><cite>Frau Behrendt, Ahornweg</cite></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Treppenhaus blitzsauber. Er hat danach gefragt, ob er sich 5 € für „was zu essen“ leihen kann. Klar, Kevin.</p><cite>Herr Ostrowski, Hausverwaltung</cite></div>
+        <div class="rev"><div class="stars">★★★★☆</div><p>Rasen gemäht. Hat sich die Bezahlung in Münzen geben lassen und sie vor meinen Augen nach Wert sortiert. Etwas zu genau.</p><cite>Familie Lindner</cite></div>
+        <div class="rev"><div class="stars">★★★☆☆</div><p>Kam pünktlich um 7. Ging pünktlich um 14:58. Rief beim Rausgehen „Heute ist mein Tag“. Es war Dienstag.</p><cite>Bernd K., Gartenstraße</cite></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Ich habe Kevin bei der Burger-Bude getroffen. Er hat drei SparMax-Menüs bestellt und gesagt, eins davon sei „für die Steuer“.</p><cite>Anonym, Drive-in, 23:40 Uhr</cite></div>
+        <div class="rev"><div class="stars">★★★★★★★</div><p>Sieben Sterne, weil Kevin mir erklärt hat, dass der Automat „heute heiß ist“. Ich bin übrigens der Automat.</p><cite>Automat 3, Glückskeller</cite></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stufe 3: Über Kevin -->
+  <section>
+    <div class="wrap about">
+      <div>
+        <div class="eyebrow">Über mich</div>
+        <h2 class="section-h tilt" style="--t:4deg">Kevin Kleinschmidt, Ihr Mann vor Ort.</h2>
+        <p style="margin-top:16px">Seit über zehn Jahren kümmere ich mich um Häuser in Hintertupfingen. Ich arbeite gründlich, schnell und mit System.</p>
+        <p>Das System heißt: Arbeiten bis 15 Uhr, dann direkt rüber in den Glückskeller, dann um 23 Uhr zur Burger-Bude. Seit 2014 kein einziger Tag Abweichung. Das nennt man Disziplin.</p>
+        <p class="glitch">Mein Lebensmotto: Der nächste Dreh ist der richtige.</p>
+      </div>
+      <div class="hours" aria-label="Öffnungszeiten">
+        <div><span>Mo – Fr</span><b>07:00 – 15:00</b></div>
+        <div class="gk"><span>Mo – Fr</span><b>15:01 – 22:59 · Glückskeller</b></div>
+        <div><span>Täglich</span><b>23:00 · SparMax-Menü</b></div>
+        <div><span>Sa</span><b>Ganztägig Glückskeller</b></div>
+        <div><span>So</span><b>„Nur kurz gucken“</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stufe 4: Casino -->
+  <section class="casino" id="leiter">
+    <div class="wrap">
+      <div class="bulbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <h2 class="marquee">KEVINS<br>GLÜCKSLEITER</h2>
+      <p class="sub">Kevins exklusives Trainingsgerät, original nachgebaut aus dem Glückskeller. Von der Apfeltasche bis zum SparMax-Menü. Man gewinnt immer. Nur nie zweimal auf die gleiche Art.</p>
+
+      <div class="game">
+        <div class="ladder" id="ladder" aria-label="Leiter"></div>
+        <div class="panel" id="panel">
+          <div class="screen" aria-live="polite">
+            <div class="big" id="big">Einsatz: 50 Cent</div>
+            <div class="small" id="small">Drück den Knopf. Kevin glaubt an dich.</div>
+          </div>
+          <div class="counters">
+            <div><span>Kontostand</span><b id="money">3,50 €</b></div>
+            <div><span>Gewonnen</span><b id="wins">0</b></div>
+            <div><span>Menüs</span><b id="menus">0</b></div>
+          </div>
+          <button class="spin" id="spin" type="button">DRÜCKEN</button>
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bulbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- Stufe 5: Geschäftsbericht -->
+  <section class="report">
+    <div class="wrap">
+      <h2>GESCHÄFTSBERICHT 2026</h2>
+      <p style="margin-top:8px;font-weight:600">Geprüft von: Kevin. Bestätigt von: Kevin. Verloren von: Kevin.</p>
+      <div class="bars">
+        <div class="bar"><b>Einnahmen Hausmeister</b><div class="track"><div class="fill" style="width:62%">31.400 €</div></div></div>
+        <div class="bar"><b>Burger-Bude</b><div class="track"><div class="fill" style="width:58%">1.104 SparMax-Menüs</div></div></div>
+        <div class="bar"><b>Apfeltaschen</b><div class="track"><div class="fill" style="width:35%">„Zählen nicht, sind Snacks“</div></div></div>
+        <div class="bar"><b>Glückskeller</b><div class="track"><div class="fill over">Balken passt nicht mehr auf die Seite →</div></div></div>
+        <div class="bar"><b>Rücklagen</b><div class="track"><div class="fill" style="width:2%"></div></div></div>
+      </div>
+      <p class="verdict">Fazit der Geschäftsführung: Läuft. Der Jackpot steht kurz bevor. Seit 2014.</p>
+    </div>
+  </section>
+
+  <!-- Stufe 6: Totalausfall -->
+  <section class="finale" id="kontakt">
+    <div class="wrap">
+      <h2><span class="spinlogo">🍟</span> RUF<br>KEVIN<br>AN <span class="spinlogo">🎰</span></h2>
+      <p>Für Aufträge erreichen Sie Kevin zuverlässig zu folgenden Zeiten und an folgenden Orten. Bitte bringen Sie Kleingeld mit. Nicht für ihn. Für den Automaten. Na gut, für ihn.</p>
+      <div class="contact">
+        <div><b>Telefon:</b> 0815 / 47 11 23 (ab 15 Uhr: Mailbox, Hintergrund klingelt)</div>
+        <div><b>Büro:</b> Glückskeller, Automat 3, der mit dem Kaugummi</div>
+        <div><b>Außenstelle:</b> Burger-Bude, Drive-in, Fenster 2</div>
+        <div><b>Zahlung:</b> Münzen, Gutscheine, Apfeltaschen</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Kleinschmidt Hausmeisterservice · Impressum · Datenschutz · Spielregeln</p>
+    <p>Kevin Kleinschmidt, der Glückskeller und die Burger-Bude sind frei erfunden. Ähnlichkeiten mit echten Hausmeistern sind rein zufällig.</p>
+    <p>Spielen kann süchtig machen. Echte Hilfe gibt es bei der BZgA unter 0800 137 27 00 (kostenlos).</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- Scroll-Eskalation ----------
+  const root=document.documentElement;
+  function onScroll(){
+    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    const p=Math.min(1,Math.max(0,scrollY/max));
+    root.style.setProperty('--p',p.toFixed(3));
+    document.body.classList.toggle('stage2',p>.18);
+    document.body.classList.toggle('stage3',p>.38);
+    document.body.classList.toggle('stage4',p>.55);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  onScroll();
+
+  // ---------- Glücksleiter ----------
+  const rungs=[
+    {ico:'🥧',name:'Apfeltasche'},
+    {ico:'🍟',name:'Pommes klein'},
+    {ico:'🍔',name:'Cheeseburger'},
+    {ico:'🍗',name:'6er Nuggets'},
+    {ico:'🍔',name:'Doppel-Burger'},
+    {ico:'👑',name:'SparMax-Menü',top:true}
+  ];
+  const ladder=document.getElementById('ladder');
+  rungs.forEach((r,i)=>{
+    const d=document.createElement('div');
+    d.className='rung'+(r.top?' top':'');
+    d.innerHTML='<span class="ico" aria-hidden="true">'+r.ico+'</span><span>'+r.name+'</span><span class="lvl">STUFE '+(i+1)+'</span>';
+    ladder.appendChild(d);
+  });
+  const els=[...ladder.children];
+
+  let pos=-1, money=3.5, wins=0, menus=0, lastType=null;
+  const $=id=>document.getElementById(id);
+  const fmt=n=>n.toFixed(2).replace('.',',')+' €';
+
+  // Jede Gewinnart bewegt Kevin anders. Keine darf zweimal hintereinander kommen.
+  const types=[
+    {id:'step', run(){return {d:1,big:'GEWONNEN!',small:'Ganz normal eine Stufe hoch. Langweilig, aber ehrlich.'}}},
+    {id:'jump', run(){return {d:2,big:'DOPPELSPRUNG!',small:'Der Automat hat zweimal geblinkt. Kevin nennt das ein Zeichen.'}}},
+    {id:'lose', run(){return {d:1,big:'VERLOREN …',small:'… sagt der Automat. Kevin sagt: „Das zählt als Lernerfahrung.“ Eine Stufe hoch.'}}},
+    {id:'refund', run(){money+=0.5;return {d:1,big:'GELD ZURÜCK!',small:'Die Münze ist unten wieder rausgefallen. Kevin wertet das als Gewinn plus Stufe.'}}},
+    {id:'ketchup', run(){return {d:1,big:'GEWINN IN KETCHUP!',small:'Ausgezahlt in 14 Ketchup-Tütchen. Kevin klettert sie hoch.'}}},
+    {id:'stay', run(){return {d:0,big:'FAST-GEWINN!',small:'Zwei Kirschen und eine Zitrone. Kevin bleibt stehen, aber feiert trotzdem. Zählt als Sieg.'}}},
+    {id:'neighbor', run(){return {d:1,big:'NACHBAR GEWINNT!',small:'Der Typ am Automaten daneben hat gewonnen. Kevin hat „die Energie gespürt“. Stufe hoch.'}}},
+    {id:'fall', run(){return {d:-1,big:'LEITER UMGEKIPPT!',small:'Kevin fällt eine Stufe runter, findet aber 50 Cent auf dem Boden. Das ist praktisch ein Gewinn.',bonus:0.5}}},
+    {id:'staff', run(){return {d:1,big:'PERSONAL-GEWINN!',small:'Die Aufsicht kennt Kevin seit 2014 und hat Mitleid. Gratis-Stufe.'}}}
+  ];
+
+  function render(){
+    els.forEach((e,i)=>{e.classList.toggle('on',i===pos);e.classList.toggle('done',i<pos)});
+    $('money').textContent=fmt(money);
+    $('wins').textContent=wins;
+    $('menus').textContent=menus;
+  }
+  function log(t){const d=document.createElement('div');d.textContent='› '+t;$('log').prepend(d);}
+  function confetti(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const items=['🍟','🍔','🥧','🎰','💰','🍗','👑'];
+    for(let i=0;i<28;i++){
+      const s=document.createElement('span');
+      s.className='confetti';
+      s.textContent=items[i%items.length];
+      s.style.left=Math.random()*100+'vw';
+      s.style.animationDuration=(1.6+Math.random()*1.8)+'s';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),3600);
+    }
+  }
+
+  $('spin').addEventListener('click',()=>{
+    const panel=$('panel');
+    panel.classList.remove('shake');void panel.offsetWidth;panel.classList.add('shake');
+
+    // Erster Klick: rauf auf die Apfeltasche
+    if(pos===-1){
+      money-=0.5; pos=0; wins++;
+      $('big').textContent='APFELTASCHE!';
+      $('small').textContent='Erster Dreh, erster Gewinn. Kevin ist auf der Leiter.';
+      log('Apfeltasche gewonnen. Es beginnt.');
+      return render();
+    }
+    // Oben angekommen: neue Runde
+    if(pos>=rungs.length-1){
+      pos=0; money=Math.max(money,0);
+      $('big').textContent='NOCH EINE RUNDE?';
+      $('small').textContent='Natürlich noch eine Runde. Zurück zur Apfeltasche.';
+      log('Neue Runde. „Nur noch eine.“');
+      return render();
+    }
+    if(money<0.5){
+      money+=5;
+      log('Kontostand leer. Kevin hat sich 5 € vom Kunden geliehen.');
+    }
+    money-=0.5;
+
+    let pool=types.filter(t=>t.id!==lastType);
+    if(pos===0) pool=pool.filter(t=>t.id!=='fall');
+    const t=pool[Math.floor(Math.random()*pool.length)];
+    lastType=t.id;
+    const r=t.run();
+    if(r.bonus) money+=r.bonus;
+    pos=Math.max(0,Math.min(rungs.length-1,pos+r.d));
+    wins++;
+
+    if(pos===rungs.length-1){
+      menus++;
+      $('big').textContent='👑 SPARMAX-MENÜ! 👑';
+      $('small').textContent=r.small+' Oben angekommen. Kevin hat das Leben durchgespielt. Bis morgen.';
+      log('SPARMAX-MENÜ freigeschaltet ('+menus+'×).');
+      confetti();
+    } else {
+      $('big').textContent=r.big;
+      $('small').textContent=r.small;
+      log(r.big.replace(/!|…/g,'').trim()+' → '+rungs[pos].name);
+    }
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
