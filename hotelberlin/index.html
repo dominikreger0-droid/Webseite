@@ -152,7 +152,7 @@
   footer a:hover { color: var(--pine); }
 
   .mobile-bar { display: none; }
-  :root {
+  html:root, body {
     --chat--color--primary: #1F4A3D;
     --chat--color--primary-shade-50: #1A4034;
     --chat--color--primary--shade-100: #163A30;
@@ -169,9 +169,15 @@
     --chat--message--bot--background: #F3F4F1;
     --chat--message--bot--color: #18201D;
     --chat--window--z-index: 50;
+    --chat--toggle--color: #FFFFFF;
+    --chat--input--send--button--color: #1F4A3D;
+    --chat--input--send--button--color-hover: #163A30;
+    --chat--input--border-active: 1px solid #1F4A3D;
+    --chat--button--background--primary: #1F4A3D;
+    --chat--button--background--primary--hover: #163A30;
   }
   @media (max-width: 560px) {
-    :root { --chat--window--bottom: 84px; --chat--window--right: 12px; --chat--window--width: calc(100vw - 24px); --chat--window--height: 70vh; }
+    html:root, body { --chat--window--bottom: 84px; --chat--window--right: 12px; --chat--window--width: calc(100vw - 24px); --chat--window--height: 70vh; }
   }
   .chat-card { display: flex; gap: 14px; align-items: center; background: var(--pine-soft); border-radius: 14px; padding: 16px 18px; text-decoration: none; }
   .chat-card svg { width: 26px; height: 26px; color: var(--pine); flex: none; }
