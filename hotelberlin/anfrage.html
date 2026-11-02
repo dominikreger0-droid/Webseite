@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Zimmer anfragen – LAT Hotel Eisenhüttenstadt (Entwurf)</title>
+<style>
+  :root {
+    --bg: #FFFFFF; --stone: #F3F4F1; --line: #E1E4DE; --text: #18201D; --muted: #5D6762;
+    --pine: #1F4A3D; --pine-hover: #163A30; --pine-soft: #E6EEEA; --brass: #B08A4A;
+    --on-dark: #F2F5F3; --on-dark-muted: #B9C7C0; --error: #A3341F;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--stone); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  h1, h2 { margin: 0; line-height: 1.15; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .draft { background: var(--text); color: var(--on-dark-muted); font-size: 13px; text-align: center; padding: 8px 20px; }
+  .draft b { color: var(--on-dark); }
+  .site-header { background: #fff; border-bottom: 1px solid var(--line); }
+  .site-header .wrap { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  .logo img { height: 40px; width: auto; display: block; }
+  .back { font-size: 15px; font-weight: 600; color: var(--pine); text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+
+  main { padding: 40px 0 72px; }
+  .intro { margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .label { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+  h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 780; }
+  .intro p { color: var(--muted); font-size: 17px; }
+
+  form { display: flex; flex-direction: column; gap: 18px; }
+  fieldset { margin: 0; border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 22px 20px 24px; }
+  legend { font-weight: 750; font-size: 18px; padding: 0 6px; margin-left: -6px; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; margin-top: 8px; }
+  .full { grid-column: 1 / -1; }
+  label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+  label small { font-weight: 400; color: var(--muted); }
+  input, select, textarea {
+    font: inherit; font-size: 16px; color: var(--text); background: #fff;
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 12px; min-height: 48px; width: 100%;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--pine); box-shadow: 0 0 0 3px var(--pine-soft); }
+  .choices { display: flex; flex-wrap: wrap; gap: 10px; }
+  .choice { flex-direction: row; align-items: center; gap: 10px; font-weight: 500; border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; }
+  .choice input { width: 20px; height: 20px; min-height: 0; margin: 0; accent-color: var(--pine); }
+  .choice:has(input:checked) { border-color: var(--pine); background: var(--pine-soft); }
+  .hint { font-size: 14px; color: var(--muted); }
+  .business { display: none; }
+  .business.open { display: grid; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .estimate { background: var(--pine-soft); border-radius: 12px; padding: 14px 16px; font-size: 15px; display: none; }
+  .estimate.show { display: block; }
+  .estimate b { font-size: 18px; }
+
+  .consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; font-size: 14px; color: var(--muted); }
+  .consent input { width: 20px; height: 20px; min-height: 0; margin: 2px 0 0; accent-color: var(--pine); flex: none; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 14px 26px; border: 0; border-radius: 10px; font: inherit; font-weight: 700; font-size: 17px; cursor: pointer; text-decoration: none; }
+  .btn-primary { background: var(--pine); color: #fff; width: 100%; }
+  .btn-primary:hover { background: var(--pine-hover); }
+  .btn-primary[disabled] { opacity: .6; cursor: wait; }
+  .error { color: var(--error); font-size: 15px; display: none; }
+  .error.show { display: block; }
+  :focus-visible { outline: 3px solid var(--brass); outline-offset: 2px; }
+
+  .done { display: none; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 32px 22px; text-align: center; }
+  .done.show { display: block; }
+  .done .tick { width: 56px; height: 56px; border-radius: 50%; background: var(--pine); color: #fff; display: grid; place-items: center; margin: 0 auto 16px; }
+  .done h2 { font-size: 26px; margin-bottom: 10px; }
+  .done p { color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    fieldset { padding: 18px 16px 20px; }
+    main { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft"><b>Entwurf</b> von Dominik Reger · nicht die offizielle Seite des LAT Hotels</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./"><img src="https://www.lathotel.de/wp-content/uploads/2015/03/Logo-Lat.png" alt="LAT Hotel" onerror="this.replaceWith('LAT Hotel')"></a>
+    <a class="back" href="./">← Zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="intro" id="intro">
+      <div class="label">Direkt beim Hotel</div>
+      <h1>Zimmer anfragen</h1>
+      <p>Füllen Sie das Formular aus, wir prüfen die Verfügbarkeit und melden uns bei Ihnen. Während unserer Rezeptionszeit meist innerhalb von 15 Minuten.</p>
+    </div>
+
+    <form id="form" novalidate>
+      <fieldset>
+        <legend>Aufenthalt</legend>
+        <div class="grid">
+          <label>Anreise <input type="date" name="anreise" id="anreise" required></label>
+          <label>Abreise <input type="date" name="abreise" id="abreise" required></label>
+          <label>Zimmerart
+            <select name="zimmer" id="zimmer" required>
+              <option value="Einzelzimmer">Einzelzimmer</option>
+              <option value="Doppelzimmer" selected>Doppelzimmer</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Suite">Suite</option>
+            </select>
+          </label>
+          <label>Anzahl Zimmer <input type="number" name="anzahlZimmer" id="anzahlZimmer" min="1" max="20" value="1" required></label>
+          <label>Personen gesamt <input type="number" name="personen" id="personen" min="1" max="40" value="2" required></label>
+          <label>Ankunft ca. <small>(Uhrzeit)</small> <input type="time" name="ankunft"></label>
+          <div class="full">
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="fruehstueck" id="fruehstueck"> Mit Frühstück <small>(9,50 € p. P.)</small></label>
+              <label class="choice"><input type="checkbox" name="hund" id="hund"> Mit Hund <small>(20 € / Tag)</small></label>
+              <label class="choice"><input type="checkbox" name="kinderbett" id="kinderbett"> Kinderbett <small>(10 € / Nacht)</small></label>
+            </div>
+          </div>
+          <div class="full estimate" id="estimate" aria-live="polite"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ihre Daten</legend>
+        <div class="grid">
+          <label>Vorname <input name="vorname" autocomplete="given-name" required></label>
+          <label>Nachname <input name="nachname" autocomplete="family-name" required></label>
+          <label>Geburtsdatum <input type="date" name="geburtsdatum" autocomplete="bday" required></label>
+          <label>Telefon <input type="tel" name="telefon" autocomplete="tel" required></label>
+          <label class="full">E-Mail <input type="email" name="email" autocomplete="email" required></label>
+          <label class="full">Straße und Hausnummer <input name="strasse" autocomplete="street-address" required></label>
+          <label>PLZ <input name="plz" autocomplete="postal-code" inputmode="numeric" required></label>
+          <label>Ort <input name="ort" autocomplete="address-level2" required></label>
+          <label class="full">Land <input name="land" autocomplete="country-name" value="Deutschland" required></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Geschäftlich?</legend>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="geschaeftlich" id="geschaeftlich"> Ja, Rechnung an eine Firma</label>
+        </div>
+        <div class="grid business" id="business">
+          <label class="full">Firma <input name="firma" autocomplete="organization"></label>
+          <label class="full">Rechnungsadresse <small>(falls abweichend)</small> <textarea name="rechnungsadresse" rows="3"></textarea></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Nachricht <small style="font-weight:400;font-size:14px;color:var(--muted)">(optional)</small></legend>
+        <label class="full" style="margin-top:8px">Wünsche oder Fragen <textarea name="nachricht" rows="3"></textarea></label>
+      </fieldset>
+
+      <label class="hp" aria-hidden="true">Webseite <input name="website" tabindex="-1" autocomplete="off"></label>
+
+      <label class="consent"><input type="checkbox" name="datenschutz" required> Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.</label>
+
+      <p class="error" id="error" role="alert"></p>
+      <button class="btn btn-primary" type="submit" id="submit">Anfrage senden</button>
+      <p class="hint">Dies ist noch keine verbindliche Buchung. Sie erhalten sofort eine Eingangsbestätigung per E-Mail.</p>
+    </form>
+
+    <div class="done" id="done" role="status" tabindex="-1">
+      <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Vielen Dank!</h2>
+      <p>Ihre Anfrage ist bei uns angekommen. Sie erhalten gleich eine Bestätigung per E-Mail. Wir prüfen die Verfügbarkeit und melden uns bei Ihnen, während der Rezeptionszeit meist innerhalb von 15 Minuten, sonst am nächsten Tag.</p>
+      <p style="margin-top:22px"><a class="btn btn-primary" style="width:auto" href="./">Zur Startseite</a></p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const WEBHOOK = 'https://dominikreger.app.n8n.cloud/webhook/lat-anfrage';
+  const PREISE = { Einzelzimmer: [69, 69], Doppelzimmer: [86, 86], Apartment: [89, 99], Suite: [89, 99] };
+  const $ = id => document.getElementById(id);
+  const form = $('form');
+
+  const today = new Date().toISOString().slice(0, 10);
+  $('anreise').min = today; $('abreise').min = today;
+  $('anreise').addEventListener('change', () => { $('abreise').min = $('anreise').value || today; });
+
+  $('geschaeftlich').addEventListener('change', e => $('business').classList.toggle('open', e.target.checked));
+
+  const euro = n => n.toFixed(2).replace('.', ',') + ' €';
+  function nights() {
+    const a = new Date($('anreise').value), b = new Date($('abreise').value);
+    const n = Math.round((b - a) / 86400000);
+    return n > 0 ? n : 0;
+  }
+  function estimate() {
+    const n = nights(), box = $('estimate');
+    if (!n) { box.classList.remove('show'); return; }
+    const z = $('zimmer').value, rooms = Math.max(1, +$('anzahlZimmer').value || 1), pers = Math.max(1, +$('personen').value || 1);
+    const pp = Math.ceil(pers / rooms);
+    const room = PREISE[z][pp >= 2 ? 1 : 0] + Math.max(0, pp - 2) * 10;
+    let total = room * rooms * n;
+    if ($('hund').checked) total += 20 * n;
+    if ($('kinderbett').checked) total += 10 * n;
+    const withBreakfast = total + 9.5 * pers * n;
+    const ab = (z === 'Apartment' || z === 'Suite') ? 'ab ' : '';
+    box.innerHTML = `${n} ${n === 1 ? 'Nacht' : 'Nächte'} · voraussichtlich <b>${ab}${euro($('fruehstueck').checked ? withBreakfast : total)}</b> ${$('fruehstueck').checked ? 'inkl. Frühstück' : 'ohne Frühstück'}<br><span class="hint">Unverbindliche Schätzung, den genauen Preis bestätigen wir Ihnen.</span>`;
+    box.classList.add('show');
+  }
+  ['anreise','abreise','zimmer','anzahlZimmer','personen','fruehstueck','hund','kinderbett'].forEach(id => $(id).addEventListener('input', estimate));
+  ['fruehstueck','hund','kinderbett'].forEach(id => $(id).addEventListener('change', estimate));
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const err = $('error'); err.classList.remove('show');
+    if (!form.checkValidity()) {
+      const bad = form.querySelector(':invalid');
+      err.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.'; err.classList.add('show');
+      bad.focus(); return;
+    }
+    if (!nights()) { err.textContent = 'Die Abreise muss nach der Anreise liegen.'; err.classList.add('show'); $('abreise').focus(); return; }
+    const data = Object.fromEntries(new FormData(form));
+    ['fruehstueck','hund','kinderbett','geschaeftlich','datenschutz'].forEach(k => data[k] = !!form.elements[k].checked);
+    $('submit').disabled = true; $('submit').textContent = 'Wird gesendet …';
+    try {
+      const res = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      if (!res.ok) throw new Error(res.status);
+      form.style.display = 'none'; $('intro').style.display = 'none';
+      $('done').classList.add('show'); $('done').focus(); window.scrollTo(0, 0);
+    } catch (x) {
+      err.innerHTML = 'Das hat leider nicht geklappt. Bitte rufen Sie uns an: <a href="tel:+4933644260">03364 4260</a>';
+      err.classList.add('show');
+      $('submit').disabled = false; $('submit').textContent = 'Anfrage senden';
+    }
+  });
+</script>
+</body>
+</html>
