@@ -100,6 +100,8 @@
   .use .icon svg { width: 22px; height: 22px; }
   .use h3 { font-size: 18px; color: var(--blue); }
   .use p { font-size: 15px; color: var(--muted); }
+  a.use { text-decoration: none; border: 2px solid transparent; transition: border-color .2s, background .2s; }
+  a.use:hover { border-color: var(--blue-mid); background: #fff; }
   .use small { font-size: 13px; color: var(--blue-mid); font-weight: 600; margin-top: auto; padding-top: 6px; }
 
   /* Beispiel */
@@ -151,7 +153,7 @@
 
   footer { border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); margin-top: 88px; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 26px; padding-bottom: 30px; }
-  footer nav { display: flex; gap: 18px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 10px 18px; }
   footer a { text-decoration: none; }
   footer a:hover { color: var(--blue); }
 
@@ -183,6 +185,7 @@
       <a href="#einsatz">Einsatzbereiche</a>
       <a href="#sicherheit">Sicherheit</a>
       <a href="#ablauf">Ablauf</a>
+      <a href="#fragen">Fragen</a>
     </nav>
     <a class="btn btn-wa header-btn" href="https://wa.me/491722524501?text=Hallo%20Dominik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20kostenlose%20Prozess-Analyse." target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
@@ -289,7 +292,7 @@
       <div class="head">
         <div class="eyebrow">Sicherheit und Vertrauen</div>
         <h2 id="sicherheit-title">Automatisierung, die Sie kontrollieren.</h2>
-        <p>Gerade bei Unternehmensdaten zählt, dass alles nachvollziehbar und sicher läuft.</p>
+        <p>Gerade bei Unternehmensdaten zählt, dass alles nachvollziehbar und sicher läuft. <a href="/datenschutz-ki/" style="color:var(--blue-mid);font-weight:700">Mehr zum Datenschutz →</a></p>
       </div>
       <div class="trust">
         <div class="t"><b>Der Mensch entscheidet</b><span>Die KI bereitet vor, Ihr Team gibt frei. Nichts geht ungeprüft nach außen.</span></div>
@@ -312,6 +315,21 @@
         <div class="step"><h3>Kostenlose Analyse</h3><p>Wir schauen gemeinsam, welche Abläufe sich wiederholen und wo sich Automatisierung wirklich lohnt.</p><em>ca. 60 Minuten, unverbindlich</em></div>
         <div class="step"><h3>Testlauf mit einem Ablauf</h3><p>Ich setze einen Ablauf um und teste ihn mit Ihrem Team. Sie sehen schwarz auf weiß, wie viel Zeit er spart.</p><em>meist 2–4 Wochen</em></div>
         <div class="step"><h3>Ausbauen und betreuen</h3><p>Wenn der Testlauf überzeugt, kommen weitere Abläufe dazu. Anpassungen und Betreuung gehören dazu.</p><em>monatlich, ohne lange Bindung</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fragen" style="padding-top: 0" aria-labelledby="fragen-title">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Häufige Fragen</div>
+        <h2 id="fragen-title">Die drei Fragen, die fast jeder stellt.</h2>
+        <p>Jede Frage hat eine eigene Seite mit Erklärung und den Möglichkeiten, die es gibt.</p>
+      </div>
+      <div class="uses">
+        <a class="use faq" href="/datenschutz-ki/"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Wie ist das mit dem Datenschutz?</h3><p>Wo die Daten liegen, was die KI sieht und welche Verträge es gibt.</p><small>Zur Antwort →</small></a>
+        <a class="use faq" href="/kosten/"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/></svg></div><h3>Was kostet das?</h3><p>Woraus sich der Preis zusammensetzt, mit Rechner: Lohnt es sich bei Ihnen?</p><small>Zur Antwort →</small></a>
+        <a class="use faq" href="/zusammenarbeit/"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 4.8"/></svg></div><h3>Was ändert sich für mein Team?</h3><p>Vorher und nachher, der Ablauf der Zusammenarbeit und die häufigsten Sorgen.</p><small>Zur Antwort →</small></a>
       </div>
     </div>
   </section>
@@ -357,6 +375,9 @@
   <div class="wrap">
     <span>© 2026 Dominik Reger · Eisenhüttenstadt</span>
     <nav aria-label="Rechtliches">
+      <a href="/kosten/">Kosten</a>
+      <a href="/datenschutz-ki/">Datenschutz bei KI</a>
+      <a href="/zusammenarbeit/">Zusammenarbeit</a>
       <a href="/impressum/">Impressum</a>
       <a href="/datenschutz/">Datenschutz</a>
     </nav>

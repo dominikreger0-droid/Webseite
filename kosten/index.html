@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was kostet eine Automation? – Dominik Reger</title>
+<meta name="description" content="Wie sich die Kosten einer KI-Automatisierung zusammensetzen, was die Technik kostet und wie Sie selbst ausrechnen, ob es sich lohnt.">
+<link rel="stylesheet" href="/datenschutz-ki/style.css">
+<style>
+  .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  .calc-in { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+  .calc-in label { display: flex; justify-content: space-between; font-weight: 700; color: var(--blue); font-size: 15px; }
+  .calc-in label output { font-variant-numeric: tabular-nums; color: var(--blue-mid); }
+  .calc-in input[type=range] { width: 100%; accent-color: var(--blue-mid); height: 28px; }
+  .calc-in small { color: var(--muted); font-size: 13px; }
+  .calc-out { background: var(--blue); color: #fff; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  .calc-out .big { font-size: clamp(34px, 5vw, 48px); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .calc-out .lbl { color: #C9D5EE; font-size: 15px; margin-top: 6px; }
+  .calc-out .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .calc-out .sm { font-size: 13px; color: #C9D5EE; border-top: 1px solid rgba(255,255,255,.2); padding-top: 14px; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Dominik <span>Reger</span></a>
+    <a class="btn btn-wa header-btn" href="https://wa.me/491722524501?text=Hallo%20Dominik%2C%20ich%20habe%20eine%20Frage%20zu%20den%20Kosten%20einer%20Automation." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+  </div>
+</header>
+<div class="wrap crumbs"><a href="/">Startseite</a> · Kosten</div>
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow">Kosten</div>
+      <h1>Was kostet eine Automation?</h1>
+      <p class="lead">Das hängt davon ab, was automatisiert wird. Sicher ist: Sie wissen den Preis vorher, und eine Automation soll mehr Zeit sparen, als sie kostet.</p>
+      <div class="quick">
+        <div><span class="n">1</span><b>Analyse kostenlos</b><span>Wir schauen gemeinsam, wo sich Automatisierung lohnt.</span></div>
+        <div><span class="n">2</span><b>Fester Preis vorher</b><span>Nach der Analyse bekommen Sie ein klares Angebot.</span></div>
+        <div><span class="n">3</span><b>Erst testen</b><span>Ein Ablauf als Testlauf, bevor mehr dazukommt.</span></div>
+        <div><span class="n">4</span><b>Ohne lange Bindung</b><span>Der Monatsbeitrag ist monatlich kündbar.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:8px">
+    <div class="wrap">
+      <div class="section-head"><h2>Woraus sich der Preis zusammensetzt</h2><p>Drei Teile, die Sie vorher kennen.</p></div>
+      <div class="options">
+        <div class="opt">
+          <span class="pill" style="align-self:flex-start">Teil 1</span>
+          <h3>Analyse</h3>
+          <p>Ein Gespräch von etwa 60 Minuten. Wir finden die Abläufe, die sich wiederholen, und rechnen grob aus, wie viel Zeit eine Automation spart.</p>
+          <ul><li>kostenlos und unverbindlich</li><li>bei Ihnen vor Ort oder online</li></ul>
+          <span class="fit">Kosten: keine</span>
+        </div>
+        <div class="opt rec">
+          <span class="pill" style="align-self:flex-start">Teil 2</span>
+          <h3>Einrichtung</h3>
+          <p>Ich baue den Ablauf, verbinde ihn mit Ihren Programmen, teste ihn mit Ihrem Team und weise alle kurz ein.</p>
+          <ul><li>einmalig</li><li>hängt ab von Anzahl der Abläufe, Programmen und Sonderwünschen</li></ul>
+          <span class="fit">Kosten: einmalig, fester Preis im Angebot</span>
+        </div>
+        <div class="opt">
+          <span class="pill" style="align-self:flex-start">Teil 3</span>
+          <h3>Monatsbeitrag</h3>
+          <p>Damit läuft alles weiter: Server und KI, Pflege und Updates, kleine Anpassungen und ich als Ansprechpartner.</p>
+          <ul><li>monatlich kündbar</li><li>laufende Technikkosten sind enthalten</li></ul>
+          <span class="fit">Kosten: monatlich, fester Betrag</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="rechner">
+    <div class="wrap">
+      <div class="section-head"><h2>Rechnen Sie selbst: Lohnt es sich?</h2><p>Schieben Sie die Regler auf Ihre Werte. Die Rechnung zeigt, wie viel Arbeitszeit eine Automation ungefähr frei macht.</p></div>
+      <div class="calc">
+        <form class="calc-in" id="calc" oninput="rechne()">
+          <div><label for="r-n">Gleiche Vorgänge pro Tag <output id="o-n">20</output></label><input id="r-n" type="range" min="1" max="200" value="20"><small>z. B. Anfragen, Rechnungen, Mails</small></div>
+          <div><label for="r-m">Gesparte Minuten pro Vorgang <output id="o-m">10</output></label><input id="r-m" type="range" min="1" max="30" value="10"><small>Zeit, die heute fürs Lesen, Abtippen und Sortieren draufgeht</small></div>
+          <div><label for="r-e">Kosten pro Arbeitsstunde <output id="o-e">25 €</output></label><input id="r-e" type="range" min="15" max="80" step="1" value="25"><small>Lohn inklusive Arbeitgeberanteil</small></div>
+          <div><label for="r-d">Arbeitstage pro Monat <output id="o-d">21</output></label><input id="r-d" type="range" min="15" max="31" value="21"></div>
+        </form>
+        <div class="calc-out" aria-live="polite">
+          <div class="row">
+            <div><div class="big" id="res-h">70</div><div class="lbl">Stunden pro Monat frei</div></div>
+            <div><div class="big" id="res-e">1.750 €</div><div class="lbl">Arbeitszeit pro Monat</div></div>
+          </div>
+          <div><div class="big" id="res-y" style="font-size:28px">21.000 €</div><div class="lbl">Arbeitszeit pro Jahr</div></div>
+          <p class="sm">Beispielrechnung. Die Zeit verschwindet nicht, Ihr Team nutzt sie für Kunden, Gäste und die eigentliche Arbeit. Ihre genaue Zahl rechnen wir in der Analyse aus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Was die Technik dahinter kostet</h2><p>Richtwerte für die laufenden Kosten. Bei Cloud und eigenem Server sind sie im Monatsbeitrag enthalten.</p></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lösung</th><th>Wo die Daten liegen</th><th>Technikkosten</th></tr></thead>
+          <tbody>
+            <tr><td>Cloud-Dienste mit Vertrag</td><td>bei etablierten Anbietern, je nach Dienst EU oder USA</td><td>gering, im Monatsbeitrag enthalten</td></tr>
+            <tr><td>Eigener Server in Deutschland</td><td>Automation in Deutschland, KI über ein Rechenzentrum in der EU</td><td>gering, im Monatsbeitrag enthalten</td></tr>
+            <tr><td>Eigene KI auf eigenem Server</td><td>komplett bei Ihnen oder auf Ihrem gemieteten Server</td><td>höher: Server mit Grafikkarte zur Miete oder einmalige Anschaffung, wird im Angebot einzeln ausgewiesen</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:15px">Welche Lösung passt, hängt davon ab, wie sensibel Ihre Daten sind. Mehr dazu unter <a href="/datenschutz-ki/wo-liegen-die-daten/" style="color:var(--blue-mid);font-weight:700">Wo liegen meine Daten?</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap narrow">
+      <div class="section-head"><h2>Häufige Fragen zu den Kosten</h2></div>
+      <div class="qa">
+        <details><summary>Kostet die Analyse wirklich nichts?</summary><p>Ja. Die Analyse ist kostenlos und unverbindlich. Wenn sich Automatisierung bei Ihnen nicht lohnt, sage ich Ihnen das ehrlich.</p></details>
+        <details><summary>Was passiert, wenn sich der Testlauf nicht lohnt?</summary><p>Dann bauen wir nicht weiter aus. Deshalb fangen wir immer mit einem einzigen Ablauf an und schauen uns an, wie viel Zeit er wirklich spart.</p></details>
+        <details><summary>Sind Änderungen später extra?</summary><p>Kleine Anpassungen, zum Beispiel an Texten oder Regeln, sind im Monatsbeitrag enthalten. Für einen ganz neuen Ablauf bekommen Sie vorher ein eigenes Angebot.</p></details>
+        <details><summary>Gibt es eine lange Vertragslaufzeit?</summary><p>Nein. Der Monatsbeitrag ist monatlich kündbar. Wenn Sie aufhören, bekommen Sie die Dokumentation Ihrer Abläufe.</p></details>
+        <details><summary>Warum gibt es keine festen Preise auf der Seite?</summary><p>Weil jede Automation anders ist. Ein Postfach-Assistent für ein kleines Hotel ist etwas anderes als eine Belegverarbeitung für ein Unternehmen mit eigener Software. Nach der Analyse wissen Sie den genauen Preis.</p></details>
+      </div>
+    </div>
+  </section>
+
+<section style="padding-top:40px"><div class="wrap"><div class="next"><a href="/datenschutz-ki/"><small>Weiter</small><b>Datenschutz bei KI →</b></a><a href="/zusammenarbeit/"><small>Weiter</small><b>Was ändert sich für Ihr Team? →</b></a></div></div></section>
+  <section style="padding-top:24px">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Wie viel Zeit steckt bei Ihnen drin?</h2>
+          <p>Schreiben Sie mir. In der kostenlosen Analyse rechnen wir es gemeinsam aus.</p>
+        </div>
+        <a class="btn btn-wa" href="https://wa.me/491722524501?text=Hallo%20Dominik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20kostenlose%20Analyse." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Analyse anfragen</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dominik Reger · Eisenhüttenstadt</span>
+    <nav aria-label="Weitere Seiten">
+      <a href="/kosten/">Kosten</a>
+      <a href="/datenschutz-ki/">Datenschutz bei KI</a>
+      <a href="/zusammenarbeit/">Zusammenarbeit</a>
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+<script>
+  function fmt(n) { return Math.round(n).toLocaleString('de-DE'); }
+  function rechne() {
+    var n = +document.getElementById('r-n').value, m = +document.getElementById('r-m').value,
+        e = +document.getElementById('r-e').value, d = +document.getElementById('r-d').value;
+    document.getElementById('o-n').textContent = n;
+    document.getElementById('o-m').textContent = m;
+    document.getElementById('o-e').textContent = e + ' €';
+    document.getElementById('o-d').textContent = d;
+    var h = n * m * d / 60;
+    document.getElementById('res-h').textContent = fmt(h);
+    document.getElementById('res-e').textContent = fmt(h * e) + ' €';
+    document.getElementById('res-y').textContent = fmt(h * e * 12) + ' €';
+  }
+  rechne();
+</script>
+</body>
+</html>
