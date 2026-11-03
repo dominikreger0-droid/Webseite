@@ -175,22 +175,46 @@
     .hero-actions .btn { width: 100%; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Hauptmenü */
+.topnav { display: flex; gap: 26px; margin-left: auto; margin-right: 8px; }
+.topnav a { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--muted); padding: 8px 0; border-bottom: 2px solid transparent; }
+.topnav a:hover { color: var(--blue); }
+.topnav a[aria-current="page"] { color: var(--blue); border-bottom-color: var(--blue-mid); }
+.hdr-right { display: flex; align-items: center; gap: 10px; }
+.mnav { display: none; position: relative; }
+.mnav summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 9px 14px; border: 2px solid var(--line); border-radius: 12px; font-weight: 700; font-size: 15px; color: var(--blue); background: #fff; }
+.mnav summary::-webkit-details-marker { display: none; }
+.mnav summary svg { width: 18px; height: 18px; }
+.mnav[open] summary { border-color: var(--blue-mid); }
+.mnav-panel { position: absolute; right: 0; top: calc(100% + 8px); width: min(280px, calc(100vw - 32px)); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 40px rgba(20,49,107,.16); padding: 8px; display: flex; flex-direction: column; }
+.mnav-panel a { text-decoration: none; padding: 12px 14px; border-radius: 10px; font-weight: 600; color: var(--text); }
+.mnav-panel a:hover, .mnav-panel a[aria-current="page"] { background: var(--soft); color: var(--blue); }
+.mnav-panel small { display: block; font-weight: 500; color: var(--muted); font-size: 13px; }
+@media (max-width: 860px) { .topnav { display: none; } .mnav { display: block; } }
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top">Dominik <span>Reger</span></a>
-    <nav class="nav" aria-label="Hauptmenü">
-      <a href="#einsatz">Einsatzbereiche</a>
-      <a href="#sicherheit">Sicherheit</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#fragen">Fragen</a>
+    <a class="brand" href="/">Dominik <span>Reger</span></a>
+    <nav class="topnav" aria-label="Hauptmenü">
+      <a href="/datenschutz-ki/">Datenschutz</a>
+      <a href="/kosten/">Kosten</a>
+      <a href="/zusammenarbeit/">Zusammenarbeit</a>
     </nav>
-    <a class="btn btn-wa header-btn" href="https://wa.me/491722524501?text=Hallo%20Dominik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20kostenlose%20Prozess-Analyse." target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
-      <span>WhatsApp</span>
-    </a>
+    <div class="hdr-right">
+      <details class="mnav">
+        <summary aria-label="Menü öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menü</summary>
+        <nav class="mnav-panel" aria-label="Menü">
+          <a href="/" aria-current="page">Startseite<small>Übersicht</small></a>
+          <a href="/datenschutz-ki/">Datenschutz<small>Wo liegen die Daten, was sieht die KI?</small></a>
+          <a href="/kosten/">Kosten<small>Woraus sich der Preis zusammensetzt</small></a>
+          <a href="/zusammenarbeit/">Zusammenarbeit<small>Was ändert sich für Ihr Team?</small></a>
+        </nav>
+      </details>
+      <a class="btn btn-wa header-btn" href="https://wa.me/491722524501?text=Hallo%20Dominik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20kostenlose%20Prozess-Analyse." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+    </div>
   </div>
 </header>
 

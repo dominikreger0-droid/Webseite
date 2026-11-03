@@ -1,0 +1,1 @@
+  for (const pg of ['/','/kosten/','/zusammenarbeit/','/datenschutz-ki/','/datenschutz-ki/]) for (const [n,w] of [['d',1280],['m',390]]) {

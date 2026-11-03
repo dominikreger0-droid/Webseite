@@ -84,6 +84,7 @@ td:first-child { font-weight: 700; color: var(--blue); width: 30%; }
 
 /* Diagramm: Weg der Daten */
 .path { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; margin-top: 8px; }
+.path.three { grid-template-columns: 1fr auto 1fr auto 1fr; }
 .node { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .node .ic { width: 42px; height: 42px; border-radius: 12px; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; }
 .node .ic svg { width: 21px; height: 21px; }
@@ -161,7 +162,7 @@ footer a:hover { color: var(--blue); }
 @media (max-width: 900px) {
   .quick { grid-template-columns: 1fr 1fr; }
   .cards, .options { grid-template-columns: 1fr; }
-  .path { grid-template-columns: 1fr; }
+  .path, .path.three { grid-template-columns: 1fr; }
   .link-arrow { justify-content: center; transform: rotate(90deg); }
   .compare { grid-template-columns: 1fr; }
   .swap { transform: rotate(90deg); }
@@ -175,3 +176,30 @@ footer a:hover { color: var(--blue); }
   .cta .btn { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }
+
+/* Hauptmenü */
+.topnav { display: flex; gap: 26px; margin-left: auto; margin-right: 8px; }
+.topnav a { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--muted); padding: 8px 0; border-bottom: 2px solid transparent; }
+.topnav a:hover { color: var(--blue); }
+.topnav a[aria-current="page"] { color: var(--blue); border-bottom-color: var(--blue-mid); }
+.hdr-right { display: flex; align-items: center; gap: 10px; }
+.mnav { display: none; position: relative; }
+.mnav summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 9px 14px; border: 2px solid var(--line); border-radius: 12px; font-weight: 700; font-size: 15px; color: var(--blue); background: #fff; }
+.mnav summary::-webkit-details-marker { display: none; }
+.mnav summary svg { width: 18px; height: 18px; }
+.mnav[open] summary { border-color: var(--blue-mid); }
+.mnav-panel { position: absolute; right: 0; top: calc(100% + 8px); width: min(280px, calc(100vw - 32px)); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 40px rgba(20,49,107,.16); padding: 8px; display: flex; flex-direction: column; }
+.mnav-panel a { text-decoration: none; padding: 12px 14px; border-radius: 10px; font-weight: 600; color: var(--text); }
+.mnav-panel a:hover, .mnav-panel a[aria-current="page"] { background: var(--soft); color: var(--blue); }
+.mnav-panel small { display: block; font-weight: 500; color: var(--muted); font-size: 13px; }
+@media (max-width: 860px) { .topnav { display: none; } .mnav { display: block; } }
+
+/* Datenschutz: Sprungmarken und Themen */
+.jump { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.jump a { border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; background: #fff; transition: border-color .2s; }
+.jump a:hover { border-color: var(--blue-mid); }
+.jump small { font-size: 13px; color: var(--blue-mid); font-weight: 700; }
+.jump b { color: var(--blue); }
+.topic { padding: 72px 0 8px; scroll-margin-top: 70px; border-top: 1px solid var(--line); margin-top: 24px; }
+.topic-h { font-size: clamp(30px, 4.6vw, 44px); }
+@media (max-width: 900px) { .jump { grid-template-columns: 1fr; } }
