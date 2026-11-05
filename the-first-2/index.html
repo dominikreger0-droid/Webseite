@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Friseur The First – Entwurf 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Manrope:wght@400;600;700&display=swap">
+<style>
+/* Layout: one column for mobile, large name with an italic accent, booking as the core section */
+:root{
+  --bg:#f7f5f6; --surface:#ffffff; --fg:#231b22; --muted:#6e6270;
+  --accent:#6b2f5a; --soft:#efe4ec; --line:#e2d8df; --ok:#2f6b4a;
+  --display:"Bodoni Moda", Georgia, serif; --body:"Manrope", system-ui, sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#181317; --surface:#221b21; --fg:#f2ebf0; --muted:#b0a2ad;
+  --accent:#d79bc4; --soft:#33252f; --line:#3a2e37; --ok:#7fc79f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#181317; --surface:#221b21; --fg:#f2ebf0; --muted:#b0a2ad;
+  --accent:#d79bc4; --soft:#33252f; --line:#3a2e37; --ok:#7fc79f; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.demo{background:var(--soft);color:var(--muted);font-size:12.5px;text-align:center;padding-block:8px;letter-spacing:.02em;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.demo a{color:var(--accent);font-weight:700;white-space:nowrap}
+header{padding-block:56px 40px}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--muted);font-weight:600}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(56px,16vw,104px);line-height:.95;margin:12px 0 18px;letter-spacing:-.02em}
+h1 em{color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:32ch;margin:0 0 28px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--bg);font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px;border:0;font-size:16px;font-family:var(--body);cursor:pointer}
+.cta:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+section{padding-block:36px;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:500;font-size:32px;margin:0 0 18px;text-wrap:balance}
+.price{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px dotted var(--line)}
+.price span:last-child{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
+label{font-size:13px;font-weight:600;display:grid;gap:6px}
+select,input{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:inherit;font-size:14px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;font-variant-numeric:tabular-nums}
+.slot[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.done{color:var(--ok);font-weight:600}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;font-variant-numeric:tabular-nums}
+.contact p{margin:4px 0}
+footer{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){h1{animation:up .7s ease-out both}@keyframes up{from{transform:translateY(12px)}to{transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="demo">Entwurf von Dominik Reger · Preise und Zeiten sind Beispiele · <a href="/the-first/">Entwurf 1 ansehen</a></div>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Friseur · Eisenhüttenstadt</div>
+  <h1>The <em>First</em></h1>
+  <p class="lead">Schnitt, Farbe und Styling. Termin in 30 Sekunden online buchen, auch abends.</p>
+  <a class="cta" href="#termin">Termin buchen</a>
+</header>
+
+<section>
+  <h2>Leistungen</h2>
+  <div class="price"><span>Damenhaarschnitt inkl. Föhnen</span><span>ab 38 €</span></div>
+  <div class="price"><span>Herrenhaarschnitt</span><span>ab 22 €</span></div>
+  <div class="price"><span>Kinderhaarschnitt bis 12 Jahre</span><span>ab 15 €</span></div>
+  <div class="price"><span>Färben / Ansatz</span><span>ab 45 €</span></div>
+  <div class="price"><span>Strähnen / Balayage</span><span>ab 75 €</span></div>
+  <div class="price"><span>Hochsteckfrisur</span><span>ab 40 €</span></div>
+  <p class="note">Beispielpreise, werden durch eure echten Preise ersetzt.</p>
+</section>
+
+<section id="termin">
+  <h2>Termin buchen</h2>
+  <form id="f">
+    <label for="svc">Leistung
+      <select id="svc">
+        <option>Damenhaarschnitt</option><option>Herrenhaarschnitt</option>
+        <option>Kinderhaarschnitt</option><option>Färben / Ansatz</option><option>Strähnen / Balayage</option>
+      </select>
+    </label>
+    <label for="day">Tag
+      <select id="day"></select>
+    </label>
+    <div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">Freie Zeiten</div>
+      <div class="slots" id="slots"></div>
+    </div>
+    <label for="nm">Name<input id="nm" placeholder="Vor- und Nachname" required></label>
+    <label for="tel">Handynummer<input id="tel" type="tel" placeholder="für die Erinnerung per WhatsApp" required></label>
+    <button class="cta" type="submit">Termin bestätigen</button>
+    <p id="msg" class="done" hidden></p>
+  </form>
+  <p class="note">Nach der Buchung kommt der Termin automatisch in euren Kalender. Der Kunde bekommt am Vortag eine Erinnerung.</p>
+</section>
+
+<section>
+  <h2>Öffnungszeiten</h2>
+  <div class="hours">
+    <span>Mo</span><span>geschlossen</span>
+    <span>Di – Fr</span><span>09:00 – 18:00</span>
+    <span>Sa</span><span>08:00 – 13:00</span>
+  </div>
+  <p class="note">Beispielzeiten.</p>
+</section>
+
+<section class="contact">
+  <h2>So findet ihr uns</h2>
+  <p>Friseur The First</p>
+  <p>Adresse folgt, 15890 Eisenhüttenstadt</p>
+  <p>Telefon und Instagram folgen</p>
+</section>
+
+<footer>Webseite und Online-Buchung: Dominik Reger · Instagram dominik.reg</footer>
+</div>
+
+<script>
+const days=["So","Mo","Di","Mi","Do","Fr","Sa"], daySel=document.getElementById("day");
+let d=new Date(); let n=0;
+while(n<6){d.setDate(d.getDate()+1); const w=d.getDay(); if(w===0||w===1)continue;
+  const o=document.createElement("option"); o.value=w;
+  o.textContent=days[w]+", "+d.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"}); daySel.appendChild(o); n++;}
+const slotsEl=document.getElementById("slots"); let picked=null;
+function render(){
+  slotsEl.innerHTML=""; picked=null;
+  const sat=daySel.value==="6";
+  const times=sat?["08:00","08:45","10:15","11:30"]:["09:00","10:30","11:15","13:00","14:30","16:00","17:15"];
+  times.forEach((t,i)=>{ if((i+Number(daySel.value))%3===0)return;
+    const b=document.createElement("button"); b.type="button"; b.className="slot"; b.textContent=t; b.setAttribute("aria-pressed","false");
+    b.onclick=()=>{slotsEl.querySelectorAll(".slot").forEach(x=>x.setAttribute("aria-pressed","false")); b.setAttribute("aria-pressed","true"); picked=t;};
+    slotsEl.appendChild(b);});
+}
+daySel.onchange=render; render();
+document.getElementById("f").addEventListener("submit",e=>{
+  e.preventDefault(); const m=document.getElementById("msg");
+  if(!picked){m.hidden=false;m.style.color="var(--accent)";m.textContent="Bitte wähle eine Uhrzeit aus.";return;}
+  m.style.color=""; m.hidden=false;
+  m.textContent="Demo: "+document.getElementById("svc").value+" am "+daySel.selectedOptions[0].textContent+" um "+picked+" Uhr wäre jetzt gebucht.";
+});
+</script>
+
+</body>
+</html>
